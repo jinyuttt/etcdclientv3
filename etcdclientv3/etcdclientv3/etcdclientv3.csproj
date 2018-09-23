@@ -1,0 +1,96 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="EtcdClient\ILock.cs" />
+    <Compile Remove="EtcdClient\IMaintenance.cs" />
+    <Compile Remove="EtcdClient\ITxn.cs" />
+    <Compile Remove="EtcdClient\IWatch.cs" />
+    <Compile Remove="EtcdClient\Util.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="auth\AuthDisableResponse.cs" />
+    <None Include="auth\AuthEnableResponse.cs" />
+    <None Include="auth\AuthRoleAddResponse.cs" />
+    <None Include="auth\AuthRoleDeleteResponse.cs" />
+    <None Include="auth\AuthRoleGetResponse.cs" />
+    <None Include="auth\AuthRoleGrantPermissionResponse.cs" />
+    <None Include="auth\AuthRoleListResponse.cs" />
+    <None Include="auth\AuthRoleRevokePermissionResponse.cs" />
+    <None Include="auth\AuthUserAddResponse.cs" />
+    <None Include="auth\AuthUserChangePasswordResponse.cs" />
+    <None Include="auth\AuthUserDeleteResponse.cs" />
+    <None Include="auth\AuthUserGetResponse.cs" />
+    <None Include="auth\AuthUserGrantRoleResponse.cs" />
+    <None Include="auth\AuthUserListResponse.cs" />
+    <None Include="auth\AuthUserRevokeRoleResponse.cs" />
+    <None Include="auth\Permission.cs" />
+    <None Include="cluster\Member.cs" />
+    <None Include="cluster\MemberAddResponse.cs" />
+    <None Include="cluster\MemberListResponse.cs" />
+    <None Include="cluster\MemberRemoveResponse.cs" />
+    <None Include="cluster\MemberUpdateResponse.cs" />
+    <None Include="cluster\Util.cs" />
+    <None Include="IEtcdClient\ILock.cs" />
+    <None Include="IEtcdClient\IMaintenance.cs" />
+    <None Include="IEtcdClient\ITxn.cs" />
+    <None Include="IEtcdClient\Util.cs" />
+    <None Include="IEtcdClient\IWatch.cs" />
+    <None Include="impl\AuthImpl.cs" />
+    <None Include="impl\ClientConnectionManager.cs" />
+    <None Include="impl\ClientImpl.cs" />
+    <None Include="impl\ClusterImpl.cs" />
+    <None Include="impl\KVImpl.cs" />
+    <None Include="impl\LeaseImpl.cs" />
+    <None Include="impl\LockImpl.cs" />
+    <None Include="impl\MaintenanceImpl.cs" />
+    <None Include="impl\Observers.cs" />
+    <None Include="impl\Util.cs" />
+    <None Include="impl\WatchImpl.cs" />
+    <None Include="kv\CompactResponse.cs" />
+    <None Include="kv\DeleteResponse.cs" />
+    <None Include="kv\GetResponse.cs" />
+    <None Include="kv\PutResponse.cs" />
+    <None Include="kv\TxnResponse.cs" />
+    <None Include="lease\LeaseGrantResponse.cs" />
+    <None Include="lease\LeaseKeepAliveResponse.cs" />
+    <None Include="lease\LeaseKeepAliveResponseWithError.cs" />
+    <None Include="lease\LeaseRevokeResponse.cs" />
+    <None Include="lease\LeaseTimeToLiveResponse.cs" />
+    <None Include="lease\NoSuchLeaseException.cs" />
+    <None Include="Lock\LockResponse.cs" />
+    <None Include="Lock\UnlockResponse.cs" />
+    <None Include="maintenance\AlarmMember.cs" />
+    <None Include="maintenance\AlarmResponse.cs" />
+    <None Include="maintenance\AlarmType.cs" />
+    <None Include="maintenance\DefragmentResponse.cs" />
+    <None Include="maintenance\HashKVResponse.cs" />
+    <None Include="maintenance\MoveLeaderResponse.cs" />
+    <None Include="maintenance\SnapshotReaderResponseWithError.cs" />
+    <None Include="maintenance\SnapshotResponse.cs" />
+    <None Include="maintenance\StatusResponse.cs" />
+    <None Include="options\CompactOption.cs" />
+    <None Include="options\DeleteOption.cs" />
+    <None Include="options\GetOption.cs" />
+    <None Include="options\LeaseOption.cs" />
+    <None Include="options\OptionsUtil.cs" />
+    <None Include="options\PutOption.cs" />
+    <None Include="options\WatchOption.cs" />
+    <None Include="op\Cmp.cs" />
+    <None Include="op\CmpTarget.cs" />
+    <None Include="op\Op.cs" />
+    <None Include="op\TxnImpl.cs" />
+    <None Include="watch\WatchEvent.cs" />
+    <None Include="watch\WatchResponse.cs" />
+    <None Include="watch\WatchResponseWithError.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Public\etcdgrpc.csproj" />
+  </ItemGroup>
+
+</Project>

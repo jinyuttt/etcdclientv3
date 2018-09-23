@@ -1,0 +1,9 @@
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver_dnssrv\bin\Debug\netstandard2.0\resolver_dnssrv.deps.json
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver_dnssrv\bin\Debug\netstandard2.0\resolver_dnssrv.dll
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver_dnssrv\bin\Debug\netstandard2.0\resolver_dnssrv.pdb
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver_dnssrv\obj\Debug\netstandard2.0\resolver_dnssrv.csproj.CoreCompileInputs.cache
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver_dnssrv\obj\Debug\netstandard2.0\resolver_dnssrv.AssemblyInfoInputs.cache
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver_dnssrv\obj\Debug\netstandard2.0\resolver_dnssrv.AssemblyInfo.cs
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver_dnssrv\obj\Debug\netstandard2.0\resolver_dnssrv.dll
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver_dnssrv\obj\Debug\netstandard2.0\resolver_dnssrv.pdb
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver_dnssrv\obj\Debug\netstandard2.0\resolver_dnssrv.csprojAssemblyReference.cache

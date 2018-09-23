@@ -1,0 +1,8 @@
+E:\Study\vs\etcdclientv3\etcdclientv3\Public\bin\Debug\netstandard2.0\etcdgrpc.deps.json
+E:\Study\vs\etcdclientv3\etcdclientv3\Public\bin\Debug\netstandard2.0\etcdgrpc.dll
+E:\Study\vs\etcdclientv3\etcdclientv3\Public\bin\Debug\netstandard2.0\etcdgrpc.pdb
+E:\Study\vs\etcdclientv3\etcdclientv3\Public\obj\Debug\netstandard2.0\etcdgrpc.csproj.CoreCompileInputs.cache
+E:\Study\vs\etcdclientv3\etcdclientv3\Public\obj\Debug\netstandard2.0\etcdgrpc.AssemblyInfoInputs.cache
+E:\Study\vs\etcdclientv3\etcdclientv3\Public\obj\Debug\netstandard2.0\etcdgrpc.AssemblyInfo.cs
+E:\Study\vs\etcdclientv3\etcdclientv3\Public\obj\Debug\netstandard2.0\etcdgrpc.dll
+E:\Study\vs\etcdclientv3\etcdclientv3\Public\obj\Debug\netstandard2.0\etcdgrpc.pdb

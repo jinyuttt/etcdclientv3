@@ -1,0 +1,14 @@
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver\bin\Debug\netstandard2.0\resolver.deps.json
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver\bin\Debug\netstandard2.0\resolver.dll
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver\bin\Debug\netstandard2.0\resolver.pdb
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver\bin\Debug\netstandard2.0\etcdgrpc.dll
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver\bin\Debug\netstandard2.0\URIResolver.dll
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver\bin\Debug\netstandard2.0\etcdgrpc.pdb
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver\bin\Debug\netstandard2.0\URIResolver.pdb
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver\obj\Debug\netstandard2.0\resolver.csprojAssemblyReference.cache
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver\obj\Debug\netstandard2.0\resolver.csproj.CoreCompileInputs.cache
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver\obj\Debug\netstandard2.0\resolver.AssemblyInfoInputs.cache
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver\obj\Debug\netstandard2.0\resolver.AssemblyInfo.cs
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver\obj\Debug\netstandard2.0\resolver.csproj.CopyComplete
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver\obj\Debug\netstandard2.0\resolver.dll
+E:\Study\vs\etcdclientv3\etcdclientv3\resolver\obj\Debug\netstandard2.0\resolver.pdb

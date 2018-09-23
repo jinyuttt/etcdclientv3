@@ -1,0 +1,9 @@
+E:\Study\vs\etcdclientv3\etcdclientv3\URIResolver\bin\Debug\netstandard2.0\URIResolver.deps.json
+E:\Study\vs\etcdclientv3\etcdclientv3\URIResolver\bin\Debug\netstandard2.0\URIResolver.dll
+E:\Study\vs\etcdclientv3\etcdclientv3\URIResolver\bin\Debug\netstandard2.0\URIResolver.pdb
+E:\Study\vs\etcdclientv3\etcdclientv3\URIResolver\obj\Debug\netstandard2.0\URIResolver.csproj.CoreCompileInputs.cache
+E:\Study\vs\etcdclientv3\etcdclientv3\URIResolver\obj\Debug\netstandard2.0\URIResolver.AssemblyInfoInputs.cache
+E:\Study\vs\etcdclientv3\etcdclientv3\URIResolver\obj\Debug\netstandard2.0\URIResolver.AssemblyInfo.cs
+E:\Study\vs\etcdclientv3\etcdclientv3\URIResolver\obj\Debug\netstandard2.0\URIResolver.dll
+E:\Study\vs\etcdclientv3\etcdclientv3\URIResolver\obj\Debug\netstandard2.0\URIResolver.pdb
+E:\Study\vs\etcdclientv3\etcdclientv3\URIResolver\obj\Debug\netstandard2.0\URIResolver.csprojAssemblyReference.cache
