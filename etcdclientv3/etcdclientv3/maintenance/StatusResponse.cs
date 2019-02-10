@@ -39,7 +39,7 @@ public class StatusResponse : AbstractResponse<Etcdserverpb.StatusResponse> {
   /**
    * the current raft term of the responding member.
    */
-  public ulong getRaftTerm() {
+  public ulong GetRaftTerm() {
             return GetResponse().RaftTerm;
   }
 }

@@ -19,7 +19,7 @@ namespace etcdclientv3.data
         {
             return this.byteString;
         }
-        public byte[] getBytes()
+        public byte[] GetBytes()
         {
             return byteString.ToByteArray();
         }
@@ -33,25 +33,25 @@ namespace etcdclientv3.data
          * @param charset the character set to use to transform the String into bytes
          * @return the ByteSequence
          */
-        public static ByteSequence from(string source,Encoding encoding)
+        public static ByteSequence From(string source,Encoding encoding)
         {
             byte[] bytes = encoding.GetBytes(source);
             return new ByteSequence(ByteString.CopyFrom(source, encoding));
         }
 
-        public static ByteSequence from(ByteString source)
+        public static ByteSequence From(ByteString source)
         {
             return new ByteSequence(source);
         }
 
-        public static ByteSequence from(byte[] source)
+        public static ByteSequence From(byte[] source)
         {
             return new ByteSequence(ByteString.CopyFrom(source));
         }
 
-        internal bool isPresent()
+        internal bool IsPresent
         {
-            return false;
+            get { return false; }
         }
 
        

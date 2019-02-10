@@ -2,20 +2,23 @@ using etcdclientv3.data;
 
 namespace etcdclientv3.options
 {
-    public  class WatchOption {
+    public class WatchOption
+    {
 
-        public static  WatchOption DEFAULT = newBuilder().build();
+        public static WatchOption DEFAULT = NewBuilder().Build();
 
         /**
          * Create a builder to construct option for watch operation.
          *
          * @return builder
          */
-        public static Builder newBuilder() {
+        public static Builder NewBuilder()
+        {
             return new Builder();
         }
 
-        public  class Builder {
+        public class Builder
+        {
 
             private long revision = 0L;
             private ByteSequence endKey = null;
@@ -24,7 +27,8 @@ namespace etcdclientv3.options
             private bool noPut = false;
             private bool noDelete = false;
 
-            public Builder() {
+            public Builder()
+            {
             }
 
             /**
@@ -37,7 +41,8 @@ namespace etcdclientv3.options
              * @param revision the revision to get.
              * @return builder
              */
-            public Builder withRevision(long revision) {
+            public Builder WithRevision(long revision)
+            {
                 this.revision = revision;
                 return this;
             }
@@ -56,7 +61,8 @@ namespace etcdclientv3.options
              * @param endKey end key
              * @return builder
              */
-            public Builder withRange(ByteSequence endKey) {
+            public Builder WithRange(ByteSequence endKey)
+            {
                 this.endKey = endKey;
                 return this;
             }
@@ -67,7 +73,8 @@ namespace etcdclientv3.options
              *
              * @return builder
              */
-            public Builder withPrevKV(bool prevKV) {
+            public Builder WithPrevKV(bool prevKV)
+            {
                 this.prevKV = prevKV;
                 return this;
             }
@@ -78,7 +85,8 @@ namespace etcdclientv3.options
              *
              * @return builder
              */
-            public Builder withProgressNotify(bool progressNotify) {
+            public Builder WithProgressNotify(bool progressNotify)
+            {
                 this.progressNotify = progressNotify;
                 return this;
             }
@@ -86,7 +94,8 @@ namespace etcdclientv3.options
             /**
              * filter out put event in server side.
              */
-            public Builder withNoPut(bool noPut) {
+            public Builder WithNoPut(bool noPut)
+            {
                 this.noPut = noPut;
                 return this;
             }
@@ -94,7 +103,8 @@ namespace etcdclientv3.options
             /**
              * filter out delete event in server side.
              */
-            public Builder withNoDelete(bool noDelete) {
+            public Builder withNoDelete(bool noDelete)
+            {
                 this.noDelete = noDelete;
                 return this;
             }
@@ -105,13 +115,15 @@ namespace etcdclientv3.options
              * @param prefix the common prefix of all the keys that you want to watch
              * @return builder
              */
-            public Builder withPrefix(ByteSequence prefix) {
+            public Builder WithPrefix(ByteSequence prefix)
+            {
                 ByteSequence prefixEnd = OptionsUtil.PrefixEndOf(prefix);
-                this.withRange(prefixEnd);
+                this.WithRange(prefixEnd);
                 return this;
             }
 
-            public WatchOption build() {
+            public WatchOption Build()
+            {
                 return new WatchOption(
                     endKey,
                     revision,
@@ -123,19 +135,20 @@ namespace etcdclientv3.options
 
         }
 
-        private   ByteSequence endKey;
-        private  long revision;
-        private  bool prevKV;
-  private bool progressNotify;
-  private bool noPut;
-  private bool noDelete;
+        private ByteSequence endKey;
+        private long revision;
+        private bool prevKV;
+        private bool progressNotify;
+        private bool noPut;
+        private bool noDelete;
 
-  private WatchOption( ByteSequence endKey,
-      long revision,
-      bool prevKV,
-      bool progressNotify,
-      bool noPut,
-      bool noDelete) {
+        private WatchOption(ByteSequence endKey,
+            long revision,
+            bool prevKV,
+            bool progressNotify,
+            bool noPut,
+            bool noDelete)
+        {
             this.endKey = endKey;
             this.revision = revision;
             this.prevKV = prevKV;
@@ -144,19 +157,22 @@ namespace etcdclientv3.options
             this.noDelete = noDelete;
         }
 
-        public  ByteSequence getEndKey() {
-            return this.endKey;
+        public ByteSequence EndKey
+        {
+            get { return endKey; }
         }
 
-        public long getRevision() {
-            return revision;
+        public long Revision
+        {
+            get { return revision; }
         }
 
         /**
          * Whether created watcher gets the previous KV before the event happens.
          */
-        public bool isPrevKV() {
-            return prevKV;
+        public bool IsPrevKV
+        {
+            get { return prevKV; }
         }
 
         /**
@@ -164,8 +180,9 @@ namespace etcdclientv3.options
          *
          * @return if true, watcher server should send periodic progress updates.
          */
-        public bool isProgressNotify() {
-            return progressNotify;
+        public bool IsProgressNotify
+        {
+            get { return progressNotify; }
         }
 
         /**
@@ -173,8 +190,9 @@ namespace etcdclientv3.options
          *
          * @return if true, filter put event in server side
          */
-        public bool isNoPut() {
-            return noPut;
+        public bool IsNoPut
+        {
+            get { return noPut; }
         }
 
         /**
@@ -182,8 +200,9 @@ namespace etcdclientv3.options
          *
          * @return if true, filter delete event in server side
          */
-        public bool isNoDelete() {
-            return noDelete;
+        public bool IsNoDelete
+        {
+            get { return noDelete; }
         }
     }
 }

@@ -15,7 +15,7 @@ namespace etcdclientv3.op
         private  CmpTarget<T> target;
 
         public Cmp(ByteSequence key, Op compareOp, CmpTarget<T> target) {
-            this.key = ByteString.CopyFrom(key.getBytes());
+            this.key = ByteString.CopyFrom(key.GetBytes());
             this.op = compareOp;
             this.target = target;
         }
@@ -37,8 +37,8 @@ namespace etcdclientv3.op
                     throw new Exception("Unexpected compare type (" + this.op + ")");
             }
 
-            Compare.Types.CompareTarget target = this.target.getTarget();
-            Object value = this.target.getTargetValue();
+            Compare.Types.CompareTarget target = this.target.GetTarget();
+            Object value = this.target.GetTargetValue();
 
             compare.Target = target;
             switch (target) {

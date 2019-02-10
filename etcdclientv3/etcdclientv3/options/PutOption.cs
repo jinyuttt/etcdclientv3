@@ -1,21 +1,25 @@
 namespace etcdclientv3.options
 {
-    public sealed class PutOption {
+    public sealed class PutOption
+    {
 
-        public static  PutOption DEFAULT = newBuilder().build();
-        public static Builder newBuilder() {
+        public static PutOption DEFAULT = NewBuilder().Build();
+        public static Builder NewBuilder()
+        {
             return new Builder();
         }
 
         /**
          * Builder to construct a put option.
          */
-        public  class Builder {
+        public class Builder
+        {
 
             private long leaseId = 0L;
             private bool prevKV = false;
 
-            public Builder() {
+            public Builder()
+            {
             }
 
             /**
@@ -25,9 +29,10 @@ namespace etcdclientv3.options
              * @return builder
              * @throws IllegalArgumentException if lease is less than zero.
              */
-            public Builder withLeaseId(long leaseId) {
-               // checkArgument(leaseId >= 0, "leaseId should greater than or equal to zero: leaseId=%s",
-               //     leaseId);
+            public Builder WithLeaseId(long leaseId)
+            {
+                // checkArgument(leaseId >= 0, "leaseId should greater than or equal to zero: leaseId=%s",
+                //     leaseId);
                 this.leaseId = leaseId;
                 return this;
             }
@@ -37,7 +42,8 @@ namespace etcdclientv3.options
              *
              * @return builder
              */
-            public Builder withPrevKV() {
+            public Builder WithPrevKV()
+            {
                 this.prevKV = true;
                 return this;
             }
@@ -47,16 +53,18 @@ namespace etcdclientv3.options
              *
              * @return the put option
              */
-            public PutOption build() {
+            public PutOption Build()
+            {
                 return new PutOption(this.leaseId, this.prevKV);
             }
 
         }
 
-        private  long leaseId;
-        private  bool prevKV;
+        private readonly long leaseId;
+        private readonly bool prevKV;
 
-  private PutOption(long leaseId, bool prevKV) {
+        private PutOption(long leaseId, bool prevKV)
+        {
             this.leaseId = leaseId;
             this.prevKV = prevKV;
         }
@@ -66,8 +74,9 @@ namespace etcdclientv3.options
          *
          * @return the lease id
          */
-        public long getLeaseId() {
-            return this.leaseId;
+        public long LeaseId
+        {
+            get { return leaseId; }
         }
 
         /**
@@ -75,8 +84,9 @@ namespace etcdclientv3.options
          *
          * @return the prevKV
          */
-        public bool getPrevKV() {
-            return this.prevKV;
+        public bool PrevKV
+        {
+            get { return prevKV; }
         }
     }
 }

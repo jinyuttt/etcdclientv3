@@ -11,12 +11,13 @@ using static Etcdserverpb.Watch;
 
 namespace etcdclientv3.impl
 {
-    class WatchImpl : IWatch {
+    class WatchImpl : IWatch
+    {
 
         // watchers stores a mapping between leaseID -> WatchIml.
-      private ConcurrentDictionary<long, WatcherImpl> watchers = new ConcurrentDictionary<long, WatcherImpl>();
-      private ConcurrentQueue<WatcherImpl> pendingWatchers = new ConcurrentQueue<WatcherImpl>();
-       private ISet<long> cancelSet = new HashSet<long>();
+        private ConcurrentDictionary<long, WatcherImpl> watchers = new ConcurrentDictionary<long, WatcherImpl>();
+        private ConcurrentQueue<WatcherImpl> pendingWatchers = new ConcurrentQueue<WatcherImpl>();
+        private ISet<long> cancelSet = new HashSet<long>();
         private ClientConnectionManager connectionManager;
         private ManagedChannel managedChannel;
 
@@ -24,45 +25,51 @@ namespace etcdclientv3.impl
         private bool closed = false;
         private WatchClient watchClient = null;
 
-        WatchImpl(ClientConnectionManager connectionManager) {
+        WatchImpl(ClientConnectionManager connectionManager)
+        {
             this.connectionManager = connectionManager;
             managedChannel = connectionManager.NewChannel();
-            watchClient = new WatchClient(managedChannel.channel);
+            watchClient = new WatchClient(managedChannel.Channel);
         }
 
-        private bool IsClosed() {
+        private bool IsClosed()
+        {
             return this.closed;
         }
 
-        private void SetClosed() {
+        private void SetClosed()
+        {
             this.closed = true;
         }
 
 
-        public IWatcher Watch(ByteSequence key) {
+        public IWatcher Watch(ByteSequence key)
+        {
             return this.Watch(key, WatchOption.DEFAULT);
         }
 
 
-        public IWatcher Watch(ByteSequence key, WatchOption watchOption) {
-            if (IsClosed()) {
+        public IWatcher Watch(ByteSequence key, WatchOption watchOption)
+        {
+            if (IsClosed())
+            {
                 throw new ClosedWatchClientException();
             }
             WatcherImpl watcher = new WatcherImpl(key, watchOption, this);
-           // this.pendingWatchers.Enqueue(watcher);
+            // this.pendingWatchers.Enqueue(watcher);
 
             Etcdserverpb.WatchRequest request = new Etcdserverpb.WatchRequest();
-            Etcdserverpb.WatchCreateRequest  createRequest = new Etcdserverpb.WatchCreateRequest();
+            Etcdserverpb.WatchCreateRequest createRequest = new Etcdserverpb.WatchCreateRequest();
             createRequest.Key = key.GetByteString();
-            createRequest.PrevKv = watchOption.isPrevKV();
-            createRequest.ProgressNotify = watchOption.isProgressNotify();
-            createRequest.RangeEnd = watchOption.getEndKey().GetByteString();
-            createRequest.StartRevision = watchOption.getRevision();
+            createRequest.PrevKv = watchOption.IsPrevKV;
+            createRequest.ProgressNotify = watchOption.IsProgressNotify;
+            createRequest.RangeEnd = watchOption.EndKey.GetByteString();
+            createRequest.StartRevision = watchOption.Revision;
             request.CreateRequest = createRequest;
             Grpc.Core.CallOptions callOptions = new Grpc.Core.CallOptions();
             watchClient.Watch(callOptions);
-           // watchClient.Watch()
-           // watchClient.Watch()
+            // watchClient.Watch()
+            // watchClient.Watch()
 
             //  if (this.pendingWatchers.Count == 1) {
             // head of the queue send watchCreate request.
@@ -74,7 +81,8 @@ namespace etcdclientv3.impl
         }
 
 
-        public void close() {
+        public void Close()
+        {
             lock (this)
             {
                 if (IsClosed())
@@ -91,7 +99,8 @@ namespace etcdclientv3.impl
 
         // notifies all watchers about a exception. it doesn't close watchers.
         // it is the responsibility of user to close watchers.
-        private void notifyWatchers(EtcdException e) {
+        private void notifyWatchers(EtcdException e)
+        {
             WatchResponseWithError wre = new WatchResponseWithError(e);
             if (!this.pendingWatchers.IsEmpty)
             {
@@ -118,7 +127,8 @@ namespace etcdclientv3.impl
             this.watchers.Clear();
         }
 
-        private void CancelWatcher(long id) {
+        private void CancelWatcher(long id)
+        {
             lock (this)
             {
                 if (this.IsClosed())
@@ -158,7 +168,8 @@ namespace etcdclientv3.impl
         //        return  StreamObserver<WatchResponse>();
         //}
 
-        private void processWatchResponse(WatchResponse watchResponse) {
+        private void processWatchResponse(WatchResponse watchResponse)
+        {
             // prevents grpc on sending watchResponse to a closed watch client.
             //if (this.isClosed()) {
             //  return;
@@ -171,79 +182,89 @@ namespace etcdclientv3.impl
             //} else {
             //  processEvents(watchResponse);
             //}
-      //  }
-        // resume with a delay; avoiding immediate retry on a long connection downtime.
-        //Util.addOnFailureLoggingCallback(scheduledExecutorService.schedule(this::resume, 500, TimeUnit.MILLISECONDS),
-        //   LOG, "scheduled resume failed");
-    }
-
-  private  void Resume() {
-        lock (this)
-        {
-            //this.closeGrpcWatchStreamObserver();
-           // this.cancelSet.clear();
-           // this.resumeWatchers();
+            //  }
+            // resume with a delay; avoiding immediate retry on a long connection downtime.
+            //Util.addOnFailureLoggingCallback(scheduledExecutorService.schedule(this::resume, 500, TimeUnit.MILLISECONDS),
+            //   LOG, "scheduled resume failed");
         }
-  }
 
-  // closeGrpcWatchStreamObserver closes the underlying grpc watch stream.
-  private void closeGrpcWatchStreamObserver() {
-    //if (this.grpcWatchStreamObserver == null) {
-    //  return;
-    //}
-    //this.grpcWatchStreamObserver.onCompleted();
-    //this.grpcWatchStreamObserver = null;
-  }
+        private void Resume()
+        {
+            lock (this)
+            {
+                //this.closeGrpcWatchStreamObserver();
+                // this.cancelSet.clear();
+                // this.resumeWatchers();
+            }
+        }
 
-  private static bool IsNoLeaderError(Grpc.Core.Status status) {
-    return status.StatusCode == Grpc.Core.StatusCode.Unavailable
-        && "etcdserver: no leader".Equals(status.Detail);
-  }
+        // closeGrpcWatchStreamObserver closes the underlying grpc watch stream.
+        private void CloseGrpcWatchStreamObserver()
+        {
+            //if (this.grpcWatchStreamObserver == null) {
+            //  return;
+            //}
+            //this.grpcWatchStreamObserver.onCompleted();
+            //this.grpcWatchStreamObserver = null;
+        }
 
-  private static bool isHaltError(Grpc.Core.Status status) {
-    // Unavailable codes mean the system will be right back.
-    // (e.g., can't connect, lost leader)
-    // Treat Internal codes as if something failed, leaving the
-    // system in an inconsistent state, but retrying could make progress.
-    // (e.g., failed in middle of send, corrupted frame)
-    return status.StatusCode != Grpc.Core.StatusCode.Unavailable && status.StatusCode != Grpc.Core.StatusCode.Internal;
-  }
+        private static bool IsNoLeaderError(Grpc.Core.Status status)
+        {
+            return status.StatusCode == Grpc.Core.StatusCode.Unavailable
+                && "etcdserver: no leader".Equals(status.Detail);
+        }
 
-  private void ProcessCreate(WatchResponse response) {
+        private static bool isHaltError(Grpc.Core.Status status)
+        {
+            // Unavailable codes mean the system will be right back.
+            // (e.g., can't connect, lost leader)
+            // Treat Internal codes as if something failed, leaving the
+            // system in an inconsistent state, but retrying could make progress.
+            // (e.g., failed in middle of send, corrupted frame)
+            return status.StatusCode != Grpc.Core.StatusCode.Unavailable && status.StatusCode != Grpc.Core.StatusCode.Internal;
+        }
+
+        private void ProcessCreate(WatchResponse response)
+        {
             WatcherImpl watcher = null;
-                this.pendingWatchers.TryDequeue(out watcher);
+            this.pendingWatchers.TryDequeue(out watcher);
 
-    this.SendNextWatchCreateRequest();
+            this.SendNextWatchCreateRequest();
 
-    if (watcher == null) {
-      // shouldn't happen
-      // may happen due to duplicate watch create responses.
-     // LOG.warn("Watch client receives watch create response but find no corresponding watcher");
-      return;
-    }
+            if (watcher == null)
+            {
+                // shouldn't happen
+                // may happen due to duplicate watch create responses.
+                // LOG.warn("Watch client receives watch create response but find no corresponding watcher");
+                return;
+            }
 
-    if (watcher.IsClosed()) {
-      return;
-    }
+            if (watcher.IsClosed())
+            {
+                return;
+            }
 
-    if (response.GetWatchId() == -1) {
-      watcher.Enqueue(new WatchResponseWithError(
-          new EtcdException(ErrorCode.INTERNAL, "etcd server failed to create watch id")));
-      return;
-    }
+            if (response.GetWatchId() == -1)
+            {
+                watcher.Enqueue(new WatchResponseWithError(
+                    new EtcdException(ErrorCode.INTERNAL, "etcd server failed to create watch id")));
+                return;
+            }
 
-    if (watcher.GetRevision() == 0) {
-      watcher.SetRevision(response.GetHeader().GetRevision());
-    }
+            if (watcher.GetRevision() == 0)
+            {
+                watcher.SetRevision(response.GetHeader().GetRevision());
+            }
 
-    watcher.SetWatchID(response.GetWatchId());
+            watcher.SetWatchID(response.GetWatchId());
             this.watchers[watcher.GetWatchID()] = watcher;
-  }
+        }
 
-  /**
-   * chooses the next resuming watcher to register with the grpc stream.
-   */
-  private Etcdserverpb.WatchRequest NextResume() {
+        /**
+         * chooses the next resuming watcher to register with the grpc stream.
+         */
+        private Etcdserverpb.WatchRequest NextResume()
+        {
             //        WatcherImpl pendingWatcher = null;
             //        this.pendingWatchers.TryDequeue(out pendingWatcher);
             //if (pendingWatcher != null) {
@@ -251,176 +272,207 @@ namespace etcdclientv3.impl
             //}
             //return Optional.empty();
             return null;
-  }
+        }
 
-  private void SendNextWatchCreateRequest() {
-    //this.NextResume().ifPresent(
-       // nextWatchRequest -> this.getGrpcWatchStreamObserver().onNext(nextWatchRequest));
-  }
+        private void SendNextWatchCreateRequest()
+        {
+            //this.NextResume().ifPresent(
+            // nextWatchRequest -> this.getGrpcWatchStreamObserver().onNext(nextWatchRequest));
+        }
 
-  private void ProcessEvents(WatchResponse response) {
+        private void ProcessEvents(WatchResponse response)
+        {
             WatcherImpl watcher = null;
-            this.watchers.TryGetValue(response.GetWatchId(),out watcher);
-    if (watcher == null) {
-      // cancel server side watcher.
-      this.CancelWatcher(response.GetWatchId());
-      return;
-    }
-
-    if (response.GetCompactRevision() != 0) {
-      watcher.Enqueue(new WatchResponseWithError(
-         new EtcdException(response.GetCompactRevision())));
-      return;
-    }
-
-    if (response.GetEventsCount() == 0) {
-      watcher.SetRevision(response.GetHeader().GetRevision());
-      return;
-    }
-    watcher.Enqueue(new WatchResponseWithError(response));
-    //watcher.SetRevision(
-    //    response.GetEvents(response.GetEventsCount() - 1)
-    //        .GetKv().getModRevision() + 1);
-  }
-
-  private void ResumeWatchers() {
-    //this.watchers.values().forEach(watcher -> {
-    //  if (watcher.isClosed()) {
-    //    return;
-    //  }
-    //  watcher.setWatchID(-1);
-    //  this.pendingWatchers.add(watcher);
-    //});
-
-    //this.watchers.clear();
-
-    //this.sendNextWatchCreateRequest();
-  }
-
-  private void ProcessCanceled(WatchResponse response) {
-            WatcherImpl watcher = null;
-      this.watchers.TryGetValue(response.GetWatchId(),out watcher);
-    this.cancelSet.Remove(response.GetWatchId());
-    if (watcher == null) {
-      return;
-    }
-    string reason = response.GetCancelReason();
-    if (string.IsNullOrEmpty(reason))
+            this.watchers.TryGetValue(response.GetWatchId(), out watcher);
+            if (watcher == null)
             {
-      watcher.Enqueue(new WatchResponseWithError(new EtcdException(
-          ErrorCode.OUT_OF_RANGE,
-          "etcdserver: mvcc: required revision is a future revision"))
-      );
+                // cancel server side watcher.
+                this.CancelWatcher(response.GetWatchId());
+                return;
+            }
 
-    } else {
-      watcher.Enqueue(
-          new WatchResponseWithError(new EtcdException(ErrorCode.FAILED_PRECONDITION, reason)));
-    }
-  }
+            if (response.GetCompactRevision() != 0)
+            {
+                watcher.Enqueue(new WatchResponseWithError(
+                   new EtcdException(response.GetCompactRevision())));
+                return;
+            }
 
-  private static Etcdserverpb.WatchRequest ToWatchCreateRequest(WatcherImpl watcher) {
+            if (response.GetEventsCount() == 0)
+            {
+                watcher.SetRevision(response.GetHeader().GetRevision());
+                return;
+            }
+            watcher.Enqueue(new WatchResponseWithError(response));
+            //watcher.SetRevision(
+            //    response.GetEvents(response.GetEventsCount() - 1)
+            //        .GetKv().getModRevision() + 1);
+        }
+
+        private void ResumeWatchers()
+        {
+            //this.watchers.values().forEach(watcher -> {
+            //  if (watcher.isClosed()) {
+            //    return;
+            //  }
+            //  watcher.setWatchID(-1);
+            //  this.pendingWatchers.add(watcher);
+            //});
+
+            //this.watchers.clear();
+
+            //this.sendNextWatchCreateRequest();
+        }
+
+        private void ProcessCanceled(WatchResponse response)
+        {
+            WatcherImpl watcher = null;
+            this.watchers.TryGetValue(response.GetWatchId(), out watcher);
+            this.cancelSet.Remove(response.GetWatchId());
+            if (watcher == null)
+            {
+                return;
+            }
+            string reason = response.GetCancelReason();
+            if (string.IsNullOrEmpty(reason))
+            {
+                watcher.Enqueue(new WatchResponseWithError(new EtcdException(
+                    ErrorCode.OUT_OF_RANGE,
+                    "etcdserver: mvcc: required revision is a future revision"))
+                );
+
+            }
+            else
+            {
+                watcher.Enqueue(
+                    new WatchResponseWithError(new EtcdException(ErrorCode.FAILED_PRECONDITION, reason)));
+            }
+        }
+
+        private static Etcdserverpb.WatchRequest ToWatchCreateRequest(WatcherImpl watcher)
+        {
             ByteString key = watcher.GetKey().GetByteString();
-    WatchOption option = watcher.GetWatchOption();
+            WatchOption option = watcher.GetWatchOption();
             Etcdserverpb.WatchCreateRequest watchCreate = new Etcdserverpb.WatchCreateRequest();
             watchCreate.Key = key;
-            watchCreate.PrevKv = option.isPrevKV();
-            watchCreate.ProgressNotify=option.isProgressNotify();
+            watchCreate.PrevKv = option.IsPrevKV;
+            watchCreate.ProgressNotify = option.IsProgressNotify;
             watchCreate.StartRevision = watcher.GetRevision();
-            watchCreate.RangeEnd = option.getEndKey().GetByteString();
-    if (option.isNoDelete()) {
-  watchCreate.Filters.Add(Etcdserverpb.WatchCreateRequest.Types.FilterType.Nodelete);
-    }
+            watchCreate.RangeEnd = option.EndKey.GetByteString();
+            if (option.IsNoDelete)
+            {
+                watchCreate.Filters.Add(Etcdserverpb.WatchCreateRequest.Types.FilterType.Nodelete);
+            }
 
-    if (option.isNoPut()) {
-
+            if (option.IsNoPut)
+            {
                 watchCreate.Filters.Add(Etcdserverpb.WatchCreateRequest.Types.FilterType.Noput);
             }
             Etcdserverpb.WatchRequest request = new Etcdserverpb.WatchRequest();
             request.CreateRequest = watchCreate;
             return request;
-  }
-
-  /**
-   * Watcher class holds watcher information.
-   */
-  public  class WatcherImpl   : IWatcher {
-
-     
-    private   WatchOption watchOption;
-    private   ByteSequence key;
-    private   Object closedLock = new Object();
-    // watch events buffer.
-    private   ConcurrentQueue<WatchResponseWithError> eventsQueue = new ConcurrentQueue<WatchResponseWithError>();
-    private long watchID;
-    // the revision to watch on.
-    private long revision;
-    private bool closed = false;
-    private   WatchImpl owner;
-
-    public WatcherImpl(ByteSequence key, WatchOption watchOption, WatchImpl owner) {
-      this.key = key;
-      this.watchOption = watchOption;
-      this.revision = watchOption.getRevision();
-      this.owner = owner;
-    }
-
-    public long GetRevision() {
-      return this.revision;
-    }
-
-    public void SetRevision(long revision) {
-      this.revision = revision;
-    }
-
-    public bool IsClosed() {
-      lock (this.closedLock) {
-        return closed;
-      }
-    }
-
-            public void SetClosed() {
-            lock (this.closedLock) {
-        this.closed = true;
-      }
-    }
-
-            public long GetWatchID() {
-      return watchID;
-    }
-
-            public void SetWatchID(long watchID) {
-      this.watchID = watchID;
-    }
-
-    public WatchOption GetWatchOption() {
-      return watchOption;
-    }
-
-    public ByteSequence GetKey() {
-      return key;
-    }
-
-    private void enqueue(WatchResponseWithError watchResponse) {
-      try {
-        this.eventsQueue.Enqueue(watchResponse);
-      } catch (Exception e) {
-                Thread.CurrentThread.Interrupt();
-        //LOG.warn("Interrupted", e);
-      }
-    }
-
-     
-    public void Close() {
-      lock (this.closedLock) {
-        if (IsClosed()) {
-          return;
         }
-        this.SetClosed();
-      }
 
-      this.owner.CancelWatcher(this.watchID);
-     
-    }
+        /**
+         * Watcher class holds watcher information.
+         */
+        public class WatcherImpl : IWatcher
+        {
+
+
+            private WatchOption watchOption;
+            private ByteSequence key;
+            private Object closedLock = new Object();
+            // watch events buffer.
+            private ConcurrentQueue<WatchResponseWithError> eventsQueue = new ConcurrentQueue<WatchResponseWithError>();
+            private long watchID;
+            // the revision to watch on.
+            private long revision;
+            private bool closed = false;
+            private WatchImpl owner;
+
+            public WatcherImpl(ByteSequence key, WatchOption watchOption, WatchImpl owner)
+            {
+                this.key = key;
+                this.watchOption = watchOption;
+                this.revision = watchOption.Revision;
+                this.owner = owner;
+            }
+
+            public long GetRevision()
+            {
+                return this.revision;
+            }
+
+            public void SetRevision(long revision)
+            {
+                this.revision = revision;
+            }
+
+            public bool IsClosed()
+            {
+                lock (this.closedLock)
+                {
+                    return closed;
+                }
+            }
+
+            public void SetClosed()
+            {
+                lock (this.closedLock)
+                {
+                    this.closed = true;
+                }
+            }
+
+            public long GetWatchID()
+            {
+                return watchID;
+            }
+
+            public void SetWatchID(long watchID)
+            {
+                this.watchID = watchID;
+            }
+
+            public WatchOption GetWatchOption()
+            {
+                return watchOption;
+            }
+
+            public ByteSequence GetKey()
+            {
+                return key;
+            }
+
+            private void enqueue(WatchResponseWithError watchResponse)
+            {
+                try
+                {
+                    this.eventsQueue.Enqueue(watchResponse);
+                }
+                catch (Exception e)
+                {
+                    Thread.CurrentThread.Interrupt();
+                    //LOG.warn("Interrupted", e);
+                }
+            }
+
+
+            public void Close()
+            {
+                lock (this.closedLock)
+                {
+                    if (IsClosed())
+                    {
+                        return;
+                    }
+                    this.SetClosed();
+                }
+
+                this.owner.CancelWatcher(this.watchID);
+
+            }
             public WatchResponse Listen()
             {
                 if (IsClosed())
@@ -445,7 +497,8 @@ namespace etcdclientv3.impl
                 return null;
             }
 
-    private  WatchResponse CreateWatchResponseFuture() {
+            private WatchResponse CreateWatchResponseFuture()
+            {
 
                 WatchResponseWithError watchResponse = null;
                 this.eventsQueue.TryDequeue(out watchResponse);
@@ -457,8 +510,8 @@ namespace etcdclientv3.impl
                 {
                     return null;
                 }
-     
-    }
+
+            }
 
             internal void Enqueue(WatchResponseWithError watchResponseWithError)
             {
@@ -466,14 +519,9 @@ namespace etcdclientv3.impl
             }
         }
 
-            internal void Enqueue(WatchResponseWithError watchResponseWithError)
-            {
-                throw new NotImplementedException();
-            }
-
-        public void Close()
+        internal void Enqueue(WatchResponseWithError watchResponseWithError)
         {
-            
+            throw new NotImplementedException();
         }
     }
 }

@@ -30,7 +30,7 @@ namespace etcdclientv3.impl
         {
             this.connectionManager = connectionManager;
             managedChannel = connectionManager.NewChannel();
-            leaseClient = new LeaseClient(managedChannel.channel);
+            leaseClient = new LeaseClient(managedChannel.Channel);
            // this.stub = connectionManager.NewStub<LeaseFutureStub>(null);
            // this.leaseStub = connectionManager.NewStub<LeaseStub>(null);
            // this.keepAlives = new ConcurrentDictionary<string, impl.KeepAlive>();
@@ -45,18 +45,15 @@ namespace etcdclientv3.impl
            var rsp= leaseClient.LeaseGrant(leaseGrantRequest);
             LeaseGrantResponse response = new LeaseGrantResponse(rsp);
             return response;
-
-          //  return Util.ToCompletableFutureWithRetry(
-          //       this.stub.LeaseGrant(leaseGrantRequest),
-          //      new FunctionResponse<Etcdserverpb.LeaseGrantRequest, LeaseGrantResponse>()
-          //  );
         }
 
 
         public LeaseRevokeResponse Revoke(long leaseId)
         {
-            Etcdserverpb.LeaseRevokeRequest leaseRevokeRequest = new Etcdserverpb.LeaseRevokeRequest();
-            leaseRevokeRequest.ID = leaseId;
+            Etcdserverpb.LeaseRevokeRequest leaseRevokeRequest = new Etcdserverpb.LeaseRevokeRequest
+            {
+                ID = leaseId
+            };
             var rsp = leaseClient.LeaseRevoke(leaseRevokeRequest);
             LeaseRevokeResponse response = new LeaseRevokeResponse(rsp);
             return response;
@@ -103,7 +100,7 @@ namespace etcdclientv3.impl
 
             Etcdserverpb.LeaseTimeToLiveRequest leaseTimeToLiveRequest = new Etcdserverpb.LeaseTimeToLiveRequest();
             leaseTimeToLiveRequest.ID = leaseId;
-            leaseTimeToLiveRequest.Keys = option.isAttachedKeys();
+            leaseTimeToLiveRequest.Keys = option.IsAttachedKeys;
             var rsp = leaseClient.LeaseTimeToLive(leaseTimeToLiveRequest);
             LeaseTimeToLiveResponse response = new LeaseTimeToLiveResponse(rsp);
             return response;

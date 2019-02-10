@@ -4,35 +4,39 @@ using etcdclientv3.IEtcdClient;
 using static Etcdserverpb.Auth;
 
 namespace etcdclientv3.impl
-{ 
- public class AuthImpl : IAuth {
+{
+    public class AuthImpl : IAuth
+    {
 
-     
-        private  ClientConnectionManager connectionManager;
+
+        private ClientConnectionManager connectionManager;
         private AuthClient authClient = null;
         private ManagedChannel managedChannel = null;
-  AuthImpl(ClientConnectionManager connectionManager) {
+        AuthImpl(ClientConnectionManager connectionManager)
+        {
             this.connectionManager = connectionManager;
             managedChannel = connectionManager.NewChannel();
-             authClient = new AuthClient(managedChannel.channel);
-             
+            authClient = new AuthClient(managedChannel.Channel);
+
         }
 
-  public AuthEnableResponse AuthEnable() {
-            Etcdserverpb.AuthEnableRequest enableRequest =new Etcdserverpb.AuthEnableRequest();
-           var rsp= authClient.AuthEnable(enableRequest);
+        public AuthEnableResponse AuthEnable()
+        {
+            Etcdserverpb.AuthEnableRequest enableRequest = new Etcdserverpb.AuthEnableRequest();
+            var rsp = authClient.AuthEnable(enableRequest);
             AuthEnableResponse response = new AuthEnableResponse(rsp);
             return response;
 
-    //return Util.ToCompletableFuture(
-    //    this.stub.authEnable(enableRequest),
-    //   new FunctionResponse<Etcdserverpb.AuthEnableRequest, AuthEnableResponse>());
+            //return Util.ToCompletableFuture(
+            //    this.stub.authEnable(enableRequest),
+            //   new FunctionResponse<Etcdserverpb.AuthEnableRequest, AuthEnableResponse>());
         }
 
 
-  public AuthDisableResponse AuthDisable() {
+        public AuthDisableResponse AuthDisable()
+        {
             Etcdserverpb.AuthDisableRequest disableRequest = new Etcdserverpb.AuthDisableRequest();
-            var rsp=authClient.AuthDisable(disableRequest);
+            var rsp = authClient.AuthDisable(disableRequest);
             AuthDisableResponse response = new AuthDisableResponse(rsp);
             return response;
             //return Util.ToCompletableFuture(
@@ -41,7 +45,8 @@ namespace etcdclientv3.impl
         }
 
 
-  public  AuthUserAddResponse UserAdd(ByteSequence user, ByteSequence password) {
+        public AuthUserAddResponse UserAdd(ByteSequence user, ByteSequence password)
+        {
             Etcdserverpb.AuthUserAddRequest addRequest = new Etcdserverpb.AuthUserAddRequest();
             addRequest.Name = user.ToString();
             addRequest.Password = password.ToString();
@@ -53,7 +58,8 @@ namespace etcdclientv3.impl
             //   new FunctionResponse<Etcdserverpb.AuthUserAddRequest, AuthUserAddResponse>());
         }
 
-  public  AuthUserDeleteResponse UserDelete(ByteSequence user) {
+        public AuthUserDeleteResponse UserDelete(ByteSequence user)
+        {
             Etcdserverpb.AuthUserDeleteRequest deleteRequest = new Etcdserverpb.AuthUserDeleteRequest();
             deleteRequest.Name = user.ToString();
             var rsp = authClient.UserDelete(deleteRequest);
@@ -65,8 +71,9 @@ namespace etcdclientv3.impl
         }
 
 
-  public AuthUserChangePasswordResponse UserChangePassword(ByteSequence user,
-      ByteSequence password) {
+        public AuthUserChangePasswordResponse UserChangePassword(ByteSequence user,
+            ByteSequence password)
+        {
             Etcdserverpb.AuthUserChangePasswordRequest changePasswordRequest = new Etcdserverpb.AuthUserChangePasswordRequest();
             changePasswordRequest.Name = user.ToString();
             changePasswordRequest.Password = password.ToString();
@@ -79,7 +86,8 @@ namespace etcdclientv3.impl
         }
 
 
-  public AuthUserGetResponse UserGet(ByteSequence user) {
+        public AuthUserGetResponse UserGet(ByteSequence user)
+        {
             Etcdserverpb.AuthUserGetRequest userGetRequest = new Etcdserverpb.AuthUserGetRequest();
             userGetRequest.Name = user.ToString();
             var rsp = authClient.UserGet(userGetRequest);
@@ -91,8 +99,9 @@ namespace etcdclientv3.impl
         }
 
 
-  public  AuthUserListResponse UserList() {
-            Etcdserverpb.AuthUserListRequest userListRequest =new Etcdserverpb.AuthUserListRequest();
+        public AuthUserListResponse UserList()
+        {
+            Etcdserverpb.AuthUserListRequest userListRequest = new Etcdserverpb.AuthUserListRequest();
             var rsp = authClient.UserList(userListRequest);
             AuthUserListResponse response = new AuthUserListResponse(rsp);
             return response;
@@ -102,9 +111,10 @@ namespace etcdclientv3.impl
             //   new FunctionResponse<Etcdserverpb.AuthUserListRequest, AuthUserListResponse>());
         }
 
-  
-  public  AuthUserGrantRoleResponse UserGrantRole(ByteSequence user,
-      ByteSequence role) {
+
+        public AuthUserGrantRoleResponse UserGrantRole(ByteSequence user,
+            ByteSequence role)
+        {
 
             Etcdserverpb.AuthUserGrantRoleRequest userGrantRoleRequest = new Etcdserverpb.AuthUserGrantRoleRequest();
             userGrantRoleRequest.User = user.ToString();
@@ -116,48 +126,52 @@ namespace etcdclientv3.impl
             //    new FunctionResponse<Etcdserverpb.AuthUserGrantRoleRequest, AuthUserGrantRoleResponse>());
         }
 
-  public AuthUserRevokeRoleResponse UserRevokeRole(ByteSequence user,ByteSequence role) {
-            Etcdserverpb.AuthUserRevokeRoleRequest userRevokeRoleRequest =new Etcdserverpb.AuthUserRevokeRoleRequest();
-           userRevokeRoleRequest.Name = user.ToString();
+        public AuthUserRevokeRoleResponse UserRevokeRole(ByteSequence user, ByteSequence role)
+        {
+            Etcdserverpb.AuthUserRevokeRoleRequest userRevokeRoleRequest = new Etcdserverpb.AuthUserRevokeRoleRequest();
+            userRevokeRoleRequest.Name = user.ToString();
             userRevokeRoleRequest.Role = role.ToString();
             var rsp = authClient.UserRevokeRole(userRevokeRoleRequest);
             AuthUserRevokeRoleResponse response = new AuthUserRevokeRoleResponse(rsp);
-           return response;
+            return response;
             //return Util.ToCompletableFuture(
             //authClient.UserRevokeRole(userRevokeRoleRequest),
             //new FunctionResponse<Etcdserverpb.AuthUserRevokeRoleResponse, AuthUserRevokeRoleResponse>());
-  }
+        }
 
 
-  public  AuthRoleAddResponse RoleAdd(ByteSequence user) {
+        public AuthRoleAddResponse RoleAdd(ByteSequence user)
+        {
             Etcdserverpb.AuthRoleAddRequest roleAddRequest = new Etcdserverpb.AuthRoleAddRequest();
             roleAddRequest.Name = user.ToString();
             var rsp = authClient.RoleAdd(roleAddRequest);
             AuthRoleAddResponse response = new AuthRoleAddResponse(rsp);
             return response;
-        //    return Util.ToCompletableFuture(
-        //this.stub.roleAdd(roleAddRequest), 
-        //new FunctionResponse<Etcdserverpb.AuthRoleAddRequest, AuthRoleAddResponse>());
-  }
+            //    return Util.ToCompletableFuture(
+            //this.stub.roleAdd(roleAddRequest), 
+            //new FunctionResponse<Etcdserverpb.AuthRoleAddRequest, AuthRoleAddResponse>());
+        }
 
- 
-  public AuthRoleGrantPermissionResponse RoleGrantPermission(ByteSequence role,
-      ByteSequence key, ByteSequence rangeEnd, auth.Permission.Type permType) {
+
+        public AuthRoleGrantPermissionResponse RoleGrantPermission(ByteSequence role,
+            ByteSequence key, ByteSequence rangeEnd, auth.Permission.Type permType)
+        {
             Authpb.Permission.Types.Type type;
-    switch (permType) {
-      case Permission.Type.WRITE:
-        type = Authpb.Permission.Types.Type.Write;
-        break;
-      case Permission.Type.READWRITE:
-        type = Authpb.Permission.Types.Type.Readwrite;
-        break;
-      case Permission.Type.READ:
-        type = Authpb.Permission.Types.Type.Read;
-        break;
-      default:
-        type = Authpb.Permission.Types.Type.Readwrite;
-        break;
-    }
+            switch (permType)
+            {
+                case Permission.Type.WRITE:
+                    type = Authpb.Permission.Types.Type.Write;
+                    break;
+                case Permission.Type.READWRITE:
+                    type = Authpb.Permission.Types.Type.Readwrite;
+                    break;
+                case Permission.Type.READ:
+                    type = Authpb.Permission.Types.Type.Read;
+                    break;
+                default:
+                    type = Authpb.Permission.Types.Type.Readwrite;
+                    break;
+            }
             Authpb.Permission perm = new Authpb.Permission();
             perm.Key = key.GetByteString();
             perm.RangeEnd = rangeEnd.GetByteString();
@@ -173,7 +187,8 @@ namespace etcdclientv3.impl
             //  new FunctionResponse<Etcdserverpb.AuthRoleGrantPermissionRequest, AuthRoleGrantPermissionResponse>());
         }
 
-  public   AuthRoleGetResponse RoleGet(ByteSequence role) {
+        public AuthRoleGetResponse RoleGet(ByteSequence role)
+        {
 
             Etcdserverpb.AuthRoleGetRequest roleGetRequest = new Etcdserverpb.AuthRoleGetRequest();
             roleGetRequest.Role = role.ToString();
@@ -185,9 +200,10 @@ namespace etcdclientv3.impl
             //    new FunctionResponse<Etcdserverpb.AuthRoleGetRequest, AuthRoleGetResponse>());
         }
 
-   
-  public   AuthRoleListResponse RoleList() {
-Etcdserverpb.AuthRoleListRequest roleListRequest = new Etcdserverpb.AuthRoleListRequest();
+
+        public AuthRoleListResponse RoleList()
+        {
+            Etcdserverpb.AuthRoleListRequest roleListRequest = new Etcdserverpb.AuthRoleListRequest();
             var rsp = authClient.RoleList(roleListRequest);
             AuthRoleListResponse response = new AuthRoleListResponse(rsp);
             return response;
@@ -196,10 +212,11 @@ Etcdserverpb.AuthRoleListRequest roleListRequest = new Etcdserverpb.AuthRoleList
             //  new FunctionResponse<Etcdserverpb.AuthRoleListRequest, AuthRoleListResponse>());
         }
 
-   
-  public   AuthRoleRevokePermissionResponse RoleRevokePermission(ByteSequence role,
-      ByteSequence key, ByteSequence rangeEnd) {
-            Etcdserverpb.AuthRoleRevokePermissionRequest roleRevokePermissionRequest =new  Etcdserverpb.AuthRoleRevokePermissionRequest();
+
+        public AuthRoleRevokePermissionResponse RoleRevokePermission(ByteSequence role,
+            ByteSequence key, ByteSequence rangeEnd)
+        {
+            Etcdserverpb.AuthRoleRevokePermissionRequest roleRevokePermissionRequest = new Etcdserverpb.AuthRoleRevokePermissionRequest();
             roleRevokePermissionRequest.Role = role.ToString();
             roleRevokePermissionRequest.Key = role.ToString();
             roleRevokePermissionRequest.RangeEnd = rangeEnd.ToString();
@@ -211,8 +228,9 @@ Etcdserverpb.AuthRoleListRequest roleListRequest = new Etcdserverpb.AuthRoleList
             //     new FunctionResponse<Etcdserverpb.AuthRoleRevokePermissionRequest, AuthRoleRevokePermissionResponse>());
         }
 
-    
-  public AuthRoleDeleteResponse RoleDelete(ByteSequence role) {
+
+        public AuthRoleDeleteResponse RoleDelete(ByteSequence role)
+        {
             Etcdserverpb.AuthRoleDeleteRequest roleDeleteRequest = new Etcdserverpb.AuthRoleDeleteRequest();
             roleDeleteRequest.Role = role.ToString();
             var rsp = authClient.RoleDelete(roleDeleteRequest);
@@ -222,9 +240,5 @@ Etcdserverpb.AuthRoleListRequest roleListRequest = new Etcdserverpb.AuthRoleList
             //   this.stub.roleDelete(roleDeleteRequest),
             //   new FunctionResponse<Etcdserverpb.AuthRoleDeleteRequest, AuthRoleDeleteResponse>());
         }
-
-
     }
-
-
 }

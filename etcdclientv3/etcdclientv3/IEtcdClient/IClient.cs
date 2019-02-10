@@ -2,7 +2,7 @@
 
 namespace etcdclientv3.IEtcdClient
 {
- public   interface IClient
+    public interface IClient
     {
         IAuth GetAuthClient();
 
@@ -17,8 +17,8 @@ namespace etcdclientv3.IEtcdClient
         IWatch GetWatchClient();
 
         ILock GetLockClient();
+
         void Close();
-     
-     
+
     }
 }

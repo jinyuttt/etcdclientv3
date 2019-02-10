@@ -1,8 +1,4 @@
-﻿using etcdclientv3.EtcdClient;
-using etcdclientv3.watch;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using etcdclientv3.watch;
 
 namespace etcdclientv3.IEtcdClient
 {

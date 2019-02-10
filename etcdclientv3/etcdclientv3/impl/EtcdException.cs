@@ -1,6 +1,4 @@
-﻿using etcdclientv3.watch;
-
-namespace etcdclientv3.impl
+﻿namespace etcdclientv3.impl
 {
     public class EtcdException 
     {

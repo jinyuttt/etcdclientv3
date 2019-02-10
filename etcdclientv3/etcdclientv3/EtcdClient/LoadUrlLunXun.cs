@@ -1,11 +1,10 @@
 ﻿using etcdclientv3.LoadBalancer;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace etcdclientv3.EtcdClient
 {
-  public  class LoadUrlLunXun : IFactory
+    public  class LoadUrlLunXun : IFactory
     {
         List<Uri> uris = null;
         int index = 0;

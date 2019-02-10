@@ -2,28 +2,33 @@ using etcdclientv3.Response;
 using System.Collections.Generic;
 
 namespace etcdclientv3.cluster
-{ 
-public class MemberUpdateResponse: AbstractResponse<Etcdserverpb.MemberUpdateResponse>
+{
+    public class MemberUpdateResponse : AbstractResponse<Etcdserverpb.MemberUpdateResponse>
     {
 
-  private List<Member> members;
-        private object lock_obj = new object();
-  public MemberUpdateResponse(Etcdserverpb.MemberUpdateResponse response):base(response,response.Header) {
-   
-  }
+        private List<Member> members;
+        private readonly object lock_obj = new object();
+        public MemberUpdateResponse(Etcdserverpb.MemberUpdateResponse response) : base(response, response.Header)
+        {
 
-  /**
-   * returns a list of all members after updating the member.
-   */
-  public  List<Member> GetMembers() {
-            lock (lock_obj)
+        }
+
+        /**
+         * returns a list of all members after updating the member.
+         */
+        public List<Member> GetMembers()
+        {
+            if (members == null)
             {
-                if (members == null)
+                lock (lock_obj)
                 {
-                    members = Util.ToMembers(GetResponse().Members);
+                    if (members == null)
+                    {
+                        members = Util.ToMembers(GetResponse().Members);
+                    }
                 }
             }
-    return members;
-  }
-}
+            return members;
+        }
+    }
 }

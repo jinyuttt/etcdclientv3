@@ -1,13 +1,10 @@
 ﻿using etcdclientv3.data;
 using etcdclientv3.KV;
 using etcdclientv3.options;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace etcdclientv3.IEtcdClient
 {
-  public  interface IKV
+    public interface IKV
     {
         /**
  * put a key-value pair into etcd.
@@ -26,8 +23,8 @@ namespace etcdclientv3.IEtcdClient
          * @param option PutOption
          * @return PutResponse
          */
-       PutResponse Put(ByteSequence key, ByteSequence value,
-            PutOption option);
+        PutResponse Put(ByteSequence key, ByteSequence value,
+             PutOption option);
 
         /**
          * retrieve value for the given key.
@@ -35,7 +32,7 @@ namespace etcdclientv3.IEtcdClient
          * @param key key in ByteSequence
          * @return GetResponse
          */
-       GetResponse Get(ByteSequence key);
+        GetResponse Get(ByteSequence key);
 
         /**
          * retrieve keys with GetOption.
@@ -82,7 +79,7 @@ namespace etcdclientv3.IEtcdClient
          * @param option CompactOption
          * @return CompactResponse
          */
-       CompactResponse Compact(long rev, CompactOption option);
+        CompactResponse Compact(long rev, CompactOption option);
 
 
         /**

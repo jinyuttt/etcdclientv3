@@ -7,7 +7,5 @@ namespace etcdclientv3.data
  public   interface IResponse
     {
         IHeader GetHeader();
-
-        
     }
 }

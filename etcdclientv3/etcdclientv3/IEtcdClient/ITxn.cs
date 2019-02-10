@@ -35,6 +35,6 @@ namespace etcdclientv3.IEtcdClient
          *
          * @return a TxnResponse wrapped in CompletableFuture
          */
-       TxnResponse commit();
+       TxnResponse Commit();
     }
 }

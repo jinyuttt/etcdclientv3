@@ -6,9 +6,9 @@ namespace etcdclientv3.options
 
     public  class DeleteOption {
 
-        public static  DeleteOption DEFAULT = newBuilder().build();
+        public static  DeleteOption DEFAULT = NewBuilder().Build();
 
-        public static Builder newBuilder() {
+        public static Builder NewBuilder() {
             return new Builder();
         }
 
@@ -35,7 +35,7 @@ namespace etcdclientv3.options
              * @param endKey end key
              * @return builder
              */
-            public Builder withRange(ByteSequence endKey) {
+            public Builder WithRange(ByteSequence endKey) {
                 this.endKey = endKey;
                 return this;
             }
@@ -50,10 +50,10 @@ namespace etcdclientv3.options
              * @param prefix the common prefix of all the keys that you want to delete
              * @return builder
              */
-            public Builder withPrefix(ByteSequence prefix) {
+            public Builder WithPrefix(ByteSequence prefix) {
                
                 ByteSequence prefixEnd = OptionsUtil.PrefixEndOf(prefix);
-                this.withRange(prefixEnd);
+                this.WithRange(prefixEnd);
                 return this;
             }
 
@@ -63,12 +63,12 @@ namespace etcdclientv3.options
              * @param prevKV flag to get previous key/value pairs before deleting them.
              * @return builder
              */
-            public Builder withPrevKV(bool prevKV) {
+            public Builder WithPrevKV(bool prevKV) {
                 this.prevKV = prevKV;
                 return this;
             }
 
-            public DeleteOption build() {
+            public DeleteOption Build() {
                 return new DeleteOption(endKey, prevKV);
             }
 
@@ -77,13 +77,13 @@ namespace etcdclientv3.options
         private   ByteSequence endKey;
         private bool prevKV;
 
-  private DeleteOption( ByteSequence endKey, bool prevKV) {
+        private DeleteOption( ByteSequence endKey, bool prevKV) {
             this.endKey = endKey;
             this.prevKV = prevKV;
         }
 
-        public  ByteSequence getEndKey() {
-            return endKey;
+        public  ByteSequence EndKey {
+            get { return endKey; }
         }
 
         /**
@@ -91,8 +91,8 @@ namespace etcdclientv3.options
          *
          * @return true if get the previous key/value pairs before deleting them, otherwise false.
          */
-        public bool isPrevKV() {
-            return prevKV;
+        public bool IsPrevKV {
+            get { return prevKV; }
         }
     }
 }

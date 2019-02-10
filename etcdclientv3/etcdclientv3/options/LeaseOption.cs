@@ -2,9 +2,9 @@ namespace etcdclientv3.options
 {
     public class LeaseOption {
 
-        public static  LeaseOption DEFAULT = newBuilder().build();
+        public static  LeaseOption DEFAULT = NewBuilder().Build();
 
-        public static Builder newBuilder() {
+        public static Builder NewBuilder() {
             return new Builder();
         }
 
@@ -20,12 +20,12 @@ namespace etcdclientv3.options
              *
              * @return builder.
              */
-            public Builder withAttachedKeys() {
+            public Builder WithAttachedKeys() {
                 this.attachedKeys = true;
                 return this;
             }
 
-            public LeaseOption build() {
+            public LeaseOption Build() {
                 return new LeaseOption(this.attachedKeys);
             }
         }
@@ -36,8 +36,8 @@ namespace etcdclientv3.options
             this.attachedKeys = attachedKeys;
         }
 
-        public bool isAttachedKeys() {
-            return attachedKeys;
+        public bool IsAttachedKeys {
+            get { return attachedKeys; }
         }
 
     }

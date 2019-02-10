@@ -14,13 +14,16 @@
           "lib/netstandard1.0/Google.Protobuf.dll": {}
         }
       },
-      "Grpc/1.14.2": {
+      "Google.Protobuf.Tools/3.6.1": {
+        "type": "package"
+      },
+      "Grpc/1.18.0": {
         "type": "package",
         "dependencies": {
-          "Grpc.Core": "1.14.2"
+          "Grpc.Core": "1.18.0"
         }
       },
-      "Grpc.Core/1.14.2": {
+      "Grpc.Core/1.18.0": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.1",
@@ -61,9 +64,6 @@
             "rid": "win"
           }
         }
-      },
-      "Grpc.Tools/1.14.2": {
-        "type": "package"
       },
       "Microsoft.NETCore.Platforms/1.1.0": {
         "type": "package",
@@ -234,9 +234,8 @@
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
           "Google.Protobuf": "3.6.1",
-          "Grpc": "1.14.2",
-          "Grpc.Core": "1.14.2",
-          "Grpc.Tools": "1.14.2"
+          "Google.Protobuf.Tools": "3.6.1",
+          "Grpc": "1.18.0"
         },
         "compile": {
           "bin/placeholder/etcdgrpc.dll": {}
@@ -262,24 +261,53 @@
         "lib/netstandard1.0/Google.Protobuf.xml"
       ]
     },
-    "Grpc/1.14.2": {
-      "sha512": "ddh7Ck7pd2UCa6wTRqqMw/SSwrpSHWY3++X+6OFv3Qngo/cDCO0rJiigTlxI2ImlTgDFZviUgk7v/lDUehvNFg==",
+    "Google.Protobuf.Tools/3.6.1": {
+      "sha512": "f0iLnV2LJ8v6kvJHiHwIPhoaWp+xCOjIac1SUxyuqvUtajU2DNdpE4TG2qWTQL8LkI8O5+A2cYOsJku1TfIhDg==",
       "type": "package",
-      "path": "grpc/1.14.2",
+      "path": "google.protobuf.tools/3.6.1",
       "files": [
         ".signature.p7s",
-        "grpc.1.14.2.nupkg.sha512",
+        "google.protobuf.tools.3.6.1.nupkg.sha512",
+        "google.protobuf.tools.nuspec",
+        "tools/google/protobuf/any.proto",
+        "tools/google/protobuf/api.proto",
+        "tools/google/protobuf/descriptor.proto",
+        "tools/google/protobuf/duration.proto",
+        "tools/google/protobuf/empty.proto",
+        "tools/google/protobuf/field_mask.proto",
+        "tools/google/protobuf/source_context.proto",
+        "tools/google/protobuf/struct.proto",
+        "tools/google/protobuf/timestamp.proto",
+        "tools/google/protobuf/type.proto",
+        "tools/google/protobuf/wrappers.proto",
+        "tools/linux_x64/protoc",
+        "tools/linux_x86/protoc",
+        "tools/macosx_x64/protoc",
+        "tools/macosx_x86/protoc",
+        "tools/windows_x64/protoc.exe",
+        "tools/windows_x86/protoc.exe"
+      ]
+    },
+    "Grpc/1.18.0": {
+      "sha512": "+ohCV/aO08MUdirqXF5NX2n027tnchMpDPeH6dQdzLvgJUWtE9LWABIYklS+Eel54EQcXQSJ5m5Yr3Kmxe9MhA==",
+      "type": "package",
+      "path": "grpc/1.18.0",
+      "files": [
+        ".signature.p7s",
+        "grpc.1.18.0.nupkg.sha512",
         "grpc.nuspec"
       ]
     },
-    "Grpc.Core/1.14.2": {
-      "sha512": "uMj1ibfglfkGgOOlmCfZl02nZBWg8q9MKaeeyfCAcsn3ILZTJR5oN9ABrPp4MzTOPwtxCGGFqfx7+o/UXgk3Rg==",
+    "Grpc.Core/1.18.0": {
+      "sha512": "JSYYWnTLSVpm1V6/z1BT9NzEGtHtBsMazHr5OTF9nntgTQMnhYQMs2wirczJr6yGRcAg7xc4jp/+F6UuEJr1aA==",
       "type": "package",
-      "path": "grpc.core/1.14.2",
+      "path": "grpc.core/1.18.0",
       "files": [
         ".signature.p7s",
+        "build/MonoAndroid10/Grpc.Core.targets",
+        "build/Xamarin.iOS10/Grpc.Core.targets",
         "build/net45/Grpc.Core.targets",
-        "grpc.core.1.14.2.nupkg.sha512",
+        "grpc.core.1.18.0.nupkg.sha512",
         "grpc.core.nuspec",
         "lib/net45/Grpc.Core.dll",
         "lib/net45/Grpc.Core.pdb",
@@ -287,34 +315,17 @@
         "lib/netstandard1.5/Grpc.Core.dll",
         "lib/netstandard1.5/Grpc.Core.pdb",
         "lib/netstandard1.5/Grpc.Core.xml",
+        "native/android/arm64-v8a/libgrpc_csharp_ext.so",
+        "native/android/armeabi-v7a/libgrpc_csharp_ext.so",
+        "native/android/x86/libgrpc_csharp_ext.so",
+        "native/ios/universal/libgrpc.a",
+        "native/ios/universal/libgrpc_csharp_ext.a",
         "runtimes/linux/native/libgrpc_csharp_ext.x64.so",
         "runtimes/linux/native/libgrpc_csharp_ext.x86.so",
         "runtimes/osx/native/libgrpc_csharp_ext.x64.dylib",
         "runtimes/osx/native/libgrpc_csharp_ext.x86.dylib",
         "runtimes/win/native/grpc_csharp_ext.x64.dll",
         "runtimes/win/native/grpc_csharp_ext.x86.dll"
-      ]
-    },
-    "Grpc.Tools/1.14.2": {
-      "sha512": "DzbQ8f7Far3JUhOGG6vrNVwxfsdN/dAS2BLBQ0IoollDSFboUjshhpTHotHWG2vfzVFoCdtkc6279rAK3FcfbA==",
-      "type": "package",
-      "path": "grpc.tools/1.14.2",
-      "files": [
-        ".signature.p7s",
-        "grpc.tools.1.14.2.nupkg.sha512",
-        "grpc.tools.nuspec",
-        "tools/linux_x64/grpc_csharp_plugin",
-        "tools/linux_x64/protoc",
-        "tools/linux_x86/grpc_csharp_plugin",
-        "tools/linux_x86/protoc",
-        "tools/macosx_x64/grpc_csharp_plugin",
-        "tools/macosx_x64/protoc",
-        "tools/macosx_x86/grpc_csharp_plugin",
-        "tools/macosx_x86/protoc",
-        "tools/windows_x64/grpc_csharp_plugin.exe",
-        "tools/windows_x64/protoc.exe",
-        "tools/windows_x86/grpc_csharp_plugin.exe",
-        "tools/windows_x86/protoc.exe"
       ]
     },
     "Microsoft.NETCore.Platforms/1.1.0": {
@@ -827,10 +838,11 @@
       ]
     },
     "System.Runtime.Loader/4.0.0": {
-      "sha512": "4UN78GOVU/mbDFcXkEWtetJT/sJ0yic2gGk1HSlSpWI0TDf421xnrZTDZnwNBapk1GQeYN7U1lTj/aQB1by6ow==",
+      "sha512": "AGWrywLI2B15/dnLuFnlHWFjXmq1Tl0kjWaKTHbaJ8T9kIxiQ8YGTtiMQc8rUr49l2JjfZa7QY0KKqlyzA7NNg==",
       "type": "package",
       "path": "system.runtime.loader/4.0.0",
       "files": [
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/net462/_._",
@@ -983,10 +995,11 @@
       ]
     },
     "System.Threading.Thread/4.0.0": {
-      "sha512": "gIdJqDXlOr5W9zeqFErLw3dsOsiShSCYtF9SEHitACycmvNvY8odf9kiKvp6V7aibc8C4HzzNBkWXjyfn7plbQ==",
+      "sha512": "nuUpkup2FbB4Xf62nwWARtm1wQ457fEyR9KvLsCzBSj1yQTtKuqmlSgw/e6aiwB3CiUEAUbZ1IgEvza/m2SYxA==",
       "type": "package",
       "path": "system.threading.thread/4.0.0",
       "files": [
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -1021,10 +1034,11 @@
       ]
     },
     "System.Threading.ThreadPool/4.0.10": {
-      "sha512": "IMXgB5Vf/5Qw1kpoVgJMOvUO1l32aC+qC3OaIZjWJOjvcxuxNWOK2ZTWWYXfij22NHxT2j1yWX5vlAeQWld9vA==",
+      "sha512": "dupLOpVBSXb3G/Ab9utLVbOYxZ+hnq5ExVz6Dk9CBlzXm6Znw1GAIOv5HEjlkECZJz40I8zhhxaJHWVsWO484Q==",
       "type": "package",
       "path": "system.threading.threadpool/4.0.10",
       "files": [
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -1075,13 +1089,13 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "2.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Study\\vs\\etcdclientv3\\etcdclientv3\\etcdclientv3\\etcdclientv3.csproj",
+      "projectUniqueName": "E:\\Study\\vs\\etcdclient\\etcdclientv3\\etcdclientv3\\etcdclientv3\\etcdclientv3.csproj",
       "projectName": "etcdclientv3",
-      "projectPath": "E:\\Study\\vs\\etcdclientv3\\etcdclientv3\\etcdclientv3\\etcdclientv3.csproj",
+      "projectPath": "E:\\Study\\vs\\etcdclient\\etcdclientv3\\etcdclientv3\\etcdclientv3\\etcdclientv3.csproj",
       "packagesPath": "C:\\Users\\jinyu\\.nuget\\packages\\",
-      "outputPath": "E:\\Study\\vs\\etcdclientv3\\etcdclientv3\\etcdclientv3\\obj\\",
+      "outputPath": "E:\\Study\\vs\\etcdclient\\etcdclientv3\\etcdclientv3\\etcdclientv3\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -1102,8 +1116,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "E:\\Study\\vs\\etcdclientv3\\etcdclientv3\\Public\\etcdgrpc.csproj": {
-              "projectPath": "E:\\Study\\vs\\etcdclientv3\\etcdclientv3\\Public\\etcdgrpc.csproj"
+            "E:\\Study\\vs\\etcdclient\\etcdclientv3\\etcdclientv3\\Public\\etcdgrpc.csproj": {
+              "projectPath": "E:\\Study\\vs\\etcdclient\\etcdclientv3\\etcdclientv3\\Public\\etcdgrpc.csproj"
             }
           }
         }

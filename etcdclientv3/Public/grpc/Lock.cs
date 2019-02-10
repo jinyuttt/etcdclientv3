@@ -32,8 +32,8 @@ namespace V3Lockpb {
             "cnZlcnBiLlJlc3BvbnNlSGVhZGVyMn4KBExvY2sSNwoETG9jaxIVLnYzbG9j",
             "a3BiLkxvY2tSZXF1ZXN0GhYudjNsb2NrcGIuTG9ja1Jlc3BvbnNlIgASPQoG",
             "VW5sb2NrEhcudjNsb2NrcGIuVW5sb2NrUmVxdWVzdBoYLnYzbG9ja3BiLlVu",
-            "bG9ja1Jlc3BvbnNlIgBCMQoZY29tLmNvcmVvcy5qZXRjZC5hcGkubG9ja0IK",
-            "SmV0Y2RQcm90b1ABogIFSmV0Y2RiBnByb3RvMw=="));
+            "bG9ja1Jlc3BvbnNlIgBCLgoWaW8uZXRjZC5qZXRjZC5hcGkubG9ja0IKSmV0",
+            "Y2RQcm90b1ABogIFSmV0Y2RiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Etcdserverpb.RpcReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -239,7 +239,7 @@ namespace V3Lockpb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public LockResponse(LockResponse other) : this() {
-      Header = other.header_ != null ? other.Header.Clone() : null;
+      header_ = other.header_ != null ? other.header_.Clone() : null;
       key_ = other.key_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -539,7 +539,7 @@ namespace V3Lockpb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public UnlockResponse(UnlockResponse other) : this() {
-      Header = other.header_ != null ? other.Header.Clone() : null;
+      header_ = other.header_ != null ? other.header_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 

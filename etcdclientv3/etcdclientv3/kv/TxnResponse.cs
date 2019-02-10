@@ -10,7 +10,7 @@ namespace etcdclientv3.KV
         private List<GetResponse> getResponses;
         private List<DeleteResponse> deleteResponses;
         private List<TxnResponse> txnResponses;
-        private object lock_obj = new object();
+        private readonly object lock_obj = new object();
 
         public TxnResponse(Etcdserverpb.TxnResponse txnResponse):base(txnResponse, txnResponse.Header) {
            
@@ -19,25 +19,29 @@ namespace etcdclientv3.KV
         /**
          * return true if the compare evaluated to true or false otherwise.
          */
-        public bool isSucceeded() {
-            return GetResponse().Succeeded;
+        public bool IsSucceeded {
+            get { return GetResponse().Succeeded; }
         }
 
         /**
          * returns a list of DeleteResponse; empty list if none.
          */
         public  List<DeleteResponse> GetDeleteResponses() {
-            lock (lock_obj)
+            if (deleteResponses == null)
             {
-                if (deleteResponses == null) {
-                    var delRes = GetResponse().Responses;
-                    List<DeleteResponse> list = new List<DeleteResponse>(delRes.Count);
-                    foreach (var responseOp in delRes)
+                lock (lock_obj)
+                {
+                    if (deleteResponses == null)
                     {
-                        if (responseOp.ResponseCase == Etcdserverpb.ResponseOp.ResponseOneofCase.ResponseDeleteRange)
-                            list.Add(new DeleteResponse(responseOp.ResponseDeleteRange));
+                        var delRes = GetResponse().Responses;
+                        List<DeleteResponse> list = new List<DeleteResponse>(delRes.Count);
+                        foreach (var responseOp in delRes)
+                        {
+                            if (responseOp.ResponseCase == Etcdserverpb.ResponseOp.ResponseOneofCase.ResponseDeleteRange)
+                                list.Add(new DeleteResponse(responseOp.ResponseDeleteRange));
+                        }
+                        deleteResponses = list;
                     }
-                    deleteResponses = list;
                 }
             }
             return deleteResponses;
@@ -46,17 +50,20 @@ namespace etcdclientv3.KV
         /**
          * returns a list of GetResponse; empty list if none.
          */
-        public  List<GetResponse> getGetResponses() {
-            lock (lock_obj)
+        public  List<GetResponse> GetGetResponses() {
+            if (getResponses == null)
             {
-                if (getResponses == null)
+                lock (lock_obj)
                 {
-                    var resps = GetResponse().Responses;
-                    List<GetResponse> list = new List<GetResponse>(resps.Count);
-                    foreach (var responseOp in resps)
+                    if (getResponses == null)
                     {
-                        if (responseOp.ResponseCase == Etcdserverpb.ResponseOp.ResponseOneofCase.ResponseRange)
-                            list.Add(new GetResponse(responseOp.ResponseRange));
+                        var resps = GetResponse().Responses;
+                        List<GetResponse> list = new List<GetResponse>(resps.Count);
+                        foreach (var responseOp in resps)
+                        {
+                            if (responseOp.ResponseCase == Etcdserverpb.ResponseOp.ResponseOneofCase.ResponseRange)
+                                list.Add(new GetResponse(responseOp.ResponseRange));
+                        }
                     }
                 }
             }
@@ -67,33 +74,41 @@ namespace etcdclientv3.KV
          * returns a list of PutResponse; empty list if none.
          */
         public  List<PutResponse> GetPutResponses() {
-            lock (lock_obj)
+            if (putResponses == null)
             {
-                if (putResponses == null) {
-                    List<PutResponse> list = new List<PutResponse>();
-                    foreach (var rsp in GetResponse().Responses)
+                lock (lock_obj)
+                {
+                    if (putResponses == null)
                     {
-                        PutResponse response = new PutResponse(rsp.ResponsePut);
-                        list.Add(response);
+                        List<PutResponse> list = new List<PutResponse>();
+                        foreach (var rsp in GetResponse().Responses)
+                        {
+                            PutResponse response = new PutResponse(rsp.ResponsePut);
+                            list.Add(response);
+                        }
+                        putResponses = list;
                     }
-                    putResponses = list;
                 }
             }
             return putResponses;
         }
 
-        public  List<TxnResponse> getTxnResponses() {
-            lock (lock_obj)
+        public  List<TxnResponse> GetTxnResponses() {
+            if (txnResponses == null)
             {
-                if (txnResponses == null) {
-                    List<TxnResponse> list = new List<TxnResponse>();
-                    foreach(var rsp in GetResponse().Responses)
+                lock (lock_obj)
+                {
+                    if (txnResponses == null)
                     {
-                        TxnResponse response = new TxnResponse(rsp.ResponseTxn);
-                        list.Add(response);
+                        List<TxnResponse> list = new List<TxnResponse>();
+                        foreach (var rsp in GetResponse().Responses)
+                        {
+                            TxnResponse response = new TxnResponse(rsp.ResponseTxn);
+                            list.Add(response);
+                        }
+                        txnResponses = list;
+
                     }
-                    txnResponses = list;
-                       
                 }
             }
             return txnResponses;

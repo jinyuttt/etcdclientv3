@@ -10,3 +10,15 @@ E:\Study\vs\etcdclientv3\etcdclientv3\etcdclientv3\bin\Debug\netstandard2.0\etcd
 E:\Study\vs\etcdclientv3\etcdclientv3\etcdclientv3\obj\Debug\netstandard2.0\etcdclientv3.csproj.CopyComplete
 E:\Study\vs\etcdclientv3\etcdclientv3\etcdclientv3\obj\Debug\netstandard2.0\etcdclientv3.dll
 E:\Study\vs\etcdclientv3\etcdclientv3\etcdclientv3\obj\Debug\netstandard2.0\etcdclientv3.pdb
+E:\Study\vs\etcdclient\etcdclientv3\etcdclientv3\etcdclientv3\bin\Debug\netstandard2.0\etcdclientv3.deps.json
+E:\Study\vs\etcdclient\etcdclientv3\etcdclientv3\etcdclientv3\bin\Debug\netstandard2.0\etcdclientv3.dll
+E:\Study\vs\etcdclient\etcdclientv3\etcdclientv3\etcdclientv3\bin\Debug\netstandard2.0\etcdclientv3.pdb
+E:\Study\vs\etcdclient\etcdclientv3\etcdclientv3\etcdclientv3\bin\Debug\netstandard2.0\etcdgrpc.dll
+E:\Study\vs\etcdclient\etcdclientv3\etcdclientv3\etcdclientv3\bin\Debug\netstandard2.0\etcdgrpc.pdb
+E:\Study\vs\etcdclient\etcdclientv3\etcdclientv3\etcdclientv3\obj\Debug\netstandard2.0\etcdclientv3.csprojAssemblyReference.cache
+E:\Study\vs\etcdclient\etcdclientv3\etcdclientv3\etcdclientv3\obj\Debug\netstandard2.0\etcdclientv3.csproj.CoreCompileInputs.cache
+E:\Study\vs\etcdclient\etcdclientv3\etcdclientv3\etcdclientv3\obj\Debug\netstandard2.0\etcdclientv3.AssemblyInfoInputs.cache
+E:\Study\vs\etcdclient\etcdclientv3\etcdclientv3\etcdclientv3\obj\Debug\netstandard2.0\etcdclientv3.AssemblyInfo.cs
+E:\Study\vs\etcdclient\etcdclientv3\etcdclientv3\etcdclientv3\obj\Debug\netstandard2.0\etcdclientv3.csproj.CopyComplete
+E:\Study\vs\etcdclient\etcdclientv3\etcdclientv3\etcdclientv3\obj\Debug\netstandard2.0\etcdclientv3.dll
+E:\Study\vs\etcdclient\etcdclientv3\etcdclientv3\etcdclientv3\obj\Debug\netstandard2.0\etcdclientv3.pdb

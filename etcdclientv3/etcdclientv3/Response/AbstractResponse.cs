@@ -4,7 +4,7 @@ using Etcdserverpb;
 
 namespace etcdclientv3.Response
 {
-  public  class AbstractResponse<T> : IResponse
+    public class AbstractResponse<T> : IResponse
     {
         private T response;
         private ResponseHeader responseHeader;
@@ -38,7 +38,7 @@ namespace etcdclientv3.Response
 
         private class HeaderImpl : IHeader
         {
-            AbstractResponse<T> response = null; 
+            AbstractResponse<T> response = null;
             public HeaderImpl(AbstractResponse<T> response)
             {
                 this.response = response;

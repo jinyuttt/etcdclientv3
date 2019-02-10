@@ -1,12 +1,11 @@
 using etcdclientv3.IEtcdClient;
-using etcdclientv3.KV;
 using Etcdserverpb;
 using System;
 using System.Collections.Generic;
 
 namespace etcdclientv3.op
 {
-   
+
     public class TxnImpl : ITxn {
 
   public static TxnImpl newTxn(IFunction<TxnRequest, KV.TxnResponse> f) {
@@ -115,7 +114,7 @@ namespace etcdclientv3.op
             return Else(new List<Op>(ops));
         }
 
-        public KV.TxnResponse commit()
+        public KV.TxnResponse Commit()
         {
             return this.requestF.apply(this.ToTxnRequest());
         }

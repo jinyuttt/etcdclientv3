@@ -1,7 +1,4 @@
-﻿using etcdclientv3.KV;
-using Etcdserverpb;
-
-namespace etcdclientv3.op
+﻿namespace etcdclientv3.op
 {
     public delegate T Function<V, T>(V v);
     public interface IFunction<T1, T2> 

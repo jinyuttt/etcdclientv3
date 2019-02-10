@@ -1,21 +1,20 @@
 ﻿using Grpc.Core;
-using System;
 
 namespace etcdclientv3.impl
 {
     internal class ManagedChannel
     {
-        public Channel channel
+        public Channel Channel
         {
             get;set;
         }
         public void Close()
         {
-            channel.ShutdownAsync();
+            Channel.ShutdownAsync();
         }
         public bool IsClose
         {
-            get { return channel.State == ChannelState.Shutdown; }
+            get { return Channel.State == ChannelState.Shutdown; }
         }
     }
 }

@@ -30,8 +30,8 @@ namespace Mvccpb {
             "KAMikQEKBUV2ZW50EiUKBHR5cGUYASABKA4yFy5tdmNjcGIuRXZlbnQuRXZl",
             "bnRUeXBlEhwKAmt2GAIgASgLMhAubXZjY3BiLktleVZhbHVlEiEKB3ByZXZf",
             "a3YYAyABKAsyEC5tdmNjcGIuS2V5VmFsdWUiIAoJRXZlbnRUeXBlEgcKA1BV",
-            "VBAAEgoKBkRFTEVURRABQhgKFGNvbS5jb3Jlb3MuamV0Y2QuYXBpUAFiBnBy",
-            "b3RvMw=="));
+            "VBAAEgoKBkRFTEVURRABQhUKEWlvLmV0Y2QuamV0Y2QuYXBpUAFiBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -360,8 +360,8 @@ namespace Mvccpb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Event(Event other) : this() {
       type_ = other.type_;
-      Kv = other.kv_ != null ? other.Kv.Clone() : null;
-      PrevKv = other.prevKv_ != null ? other.PrevKv.Clone() : null;
+      kv_ = other.kv_ != null ? other.kv_.Clone() : null;
+      prevKv_ = other.prevKv_ != null ? other.prevKv_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 

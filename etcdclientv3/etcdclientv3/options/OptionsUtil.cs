@@ -22,17 +22,17 @@ namespace etcdclientv3.options
          * @return the range end of the given prefix
          */
       public  static  ByteSequence PrefixEndOf(ByteSequence prefix) {
-            byte[] endKey =(byte[]) prefix.getBytes().Clone();
+            byte[] endKey =(byte[]) prefix.GetBytes().Clone();
             for (int i = endKey.Length - 1; i >= 0; i--) {
                 if (endKey[i] < 0xff) {
                     endKey[i] = (byte)(endKey[i] + 1);
                     byte[] dest= new byte[endKey.Length - i-1];
                     Array.Copy(endKey, i + 1, dest,0,dest.Length);
-                    return ByteSequence.from(dest);
+                    return ByteSequence.From(dest);
                 }
             }
 
-            return ByteSequence.from(NO_PREFIX_END);
+            return ByteSequence.From(NO_PREFIX_END);
         }
 
         /**

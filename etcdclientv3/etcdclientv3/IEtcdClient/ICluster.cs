@@ -6,7 +6,7 @@ using System.Text;
 
 namespace etcdclientv3.IEtcdClient
 {
-  public  interface ICluster: ICloseableClient
+    public interface ICluster : ICloseableClient
     {
 
         /**
@@ -19,7 +19,7 @@ namespace etcdclientv3.IEtcdClient
          *
          * @param peerAddrs the peer addresses of the new member
          */
-       MemberAddResponse AddMember(List<Uri> peerAddrs);
+        MemberAddResponse AddMember(List<Uri> peerAddrs);
 
         /**
          * removes an existing member from the cluster.

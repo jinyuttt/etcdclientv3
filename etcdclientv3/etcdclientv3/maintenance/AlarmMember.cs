@@ -4,8 +4,8 @@ namespace etcdclientv3.maintenance
     public class AlarmMember
     {
 
-        private ulong memberId;
-        private AlarmType alarmType;
+        private readonly ulong memberId;
+        private readonly AlarmType alarmType;
 
         public AlarmMember(ulong memberId, AlarmType alarmType)
         {
@@ -16,17 +16,17 @@ namespace etcdclientv3.maintenance
         /**
          * returns the ID of the member associated with the raised alarm.
          */
-        public ulong getMemberId()
+        public ulong MemberId
         {
-            return memberId;
+            get { return memberId; }
         }
 
         /**
          * returns the type of alarm which has been raised.
          */
-        public AlarmType getAlarmType()
+        public AlarmType AlarmType
         {
-            return alarmType;
+            get { return alarmType; }
         }
     }
 }

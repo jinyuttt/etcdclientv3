@@ -31,9 +31,9 @@ namespace etcdclientv3.impl
          * @param <T> Converted Type.
          * @return a CompletableFuture with type T.
          */
-     public   static T ToCompletableFutureWithRetry<S, T>(
-            S newSourceFuture,
-            IFunction<S, T> resultConvert)
+        public static T ToCompletableFutureWithRetry<S, T>(
+               S newSourceFuture,
+               IFunction<S, T> resultConvert)
         {
             return ToCompletableFutureWithRetry(newSourceFuture, resultConvert, Util.IsRetriable);
         }
@@ -50,10 +50,10 @@ namespace etcdclientv3.impl
          * @param <T> Converted Type.
          * @return a CompletableFuture with type T.
          */
-     public   static T ToCompletableFutureWithRetry<S, T>(
-            S newSourceFuture,
-            IFunction<S, T> resultConvert,
-            Function<Exception, bool> doRetry)
+        public static T ToCompletableFutureWithRetry<S, T>(
+               S newSourceFuture,
+               IFunction<S, T> resultConvert,
+               Function<Exception, bool> doRetry)
         {
             resultConvert.apply(newSourceFuture);
             // only retry 3 times.
@@ -75,25 +75,25 @@ namespace etcdclientv3.impl
             return default(T);
         }
 
-      public  static bool IsRetriable(Exception e)
+        public static bool IsRetriable(Exception e)
         {
             Status status = new Status(StatusCode.Unknown, e.Message);
-            return isInvalidTokenError(status);
+            return IsInvalidTokenError(status);
         }
 
-        static bool isInvalidTokenError(Status status)
+        static bool IsInvalidTokenError(Status status)
         {
             return status.StatusCode == StatusCode.Unauthenticated && "etcdserver: invalid auth token".Equals(status.Detail);
         }
 
-       
 
-        public static T supplyIfNull<T>(T target)
+
+        public static T SupplyIfNull<T>(T target)
         {
             return target != null ? target : default(T);
         }
 
-        public static void addOnFailureLoggingCallback(ILogger callerLogger, String message)
+        public static void AddOnFailureLoggingCallback(ILogger callerLogger, String message)
         {
 
         }

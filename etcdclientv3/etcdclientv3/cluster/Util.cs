@@ -10,9 +10,7 @@ namespace etcdclientv3.cluster
         /**
          * Converts a list of API member to a List of client side member.
          */
-        static List<Member> ToMembers(
-            List<Member> members) {
-
+        static List<Member> ToMembers(List<Member> members) {
             return members;
         }
 

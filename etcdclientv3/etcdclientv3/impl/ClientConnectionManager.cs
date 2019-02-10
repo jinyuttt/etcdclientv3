@@ -6,19 +6,21 @@ using Etcdserverpb;
 using Grpc.Core;
 
 namespace etcdclientv3.impl
-{ 
-  class ClientConnectionManager {
-        
+{
+    class ClientConnectionManager
+    {
 
-  private IEtcdClient.ClientBuilder builder;
-  private   string  token;
+
+        private ClientBuilder builder;
+        private string token;
         private List<ManagedChannel> lstChannels = null;
-  public ClientConnectionManager(
-      ClientBuilder builder) {
-    this.builder = builder;
-    this.token = null;
-    this.lstChannels = new List<ManagedChannel>();
-  }
+        public ClientConnectionManager(
+            ClientBuilder builder)
+        {
+            this.builder = builder;
+            this.token = null;
+            this.lstChannels = new List<ManagedChannel>();
+        }
 
         private string GetToken(Channel channel)
         {
@@ -36,7 +38,7 @@ namespace etcdclientv3.impl
 
         private string GenerateToken(Channel channel)
         {
-            if (builder.User != null && builder.Password!= null)
+            if (builder.User != null && builder.Password != null)
             {
 
                 return Authenticate(channel, builder.User, builder.Password).Token;
@@ -44,11 +46,12 @@ namespace etcdclientv3.impl
             return "";
         }
 
-        private void RefreshToken(Channel channel) {
-  
-       string tk = GenerateToken(channel);
-         token=tk;
-    }
+        private void RefreshToken(Channel channel)
+        {
+
+            string tk = GenerateToken(channel);
+            token = tk;
+        }
 
         public ManagedChannel NewChannel()
         {
@@ -58,19 +61,19 @@ namespace etcdclientv3.impl
                 Uri uri = this.builder.LoadBalancerFactory().GetUri();
                 Channel channel = new Channel(uri.Host, uri.Port, ChannelCredentials.Insecure);
                 channel.ConnectAsync();
-                managedChannel = new ManagedChannel() { channel = channel };
+                managedChannel = new ManagedChannel() { Channel = channel };
                 //   channel.ShutdownAsync();
                 lstChannels.Add(managedChannel);
             }
             return managedChannel;
         }
 
-        
+
         public void Close()
         {
-              lock(lstChannels)
+            lock (lstChannels)
             {
-                foreach(ManagedChannel channel in lstChannels)
+                foreach (ManagedChannel channel in lstChannels)
                 {
                     channel.Close();
                 }
@@ -95,7 +98,7 @@ namespace etcdclientv3.impl
             AuthenticateResponse response = new AuthenticateResponse(rsp);
             return response;
         }
-}
+    }
 }
 
 

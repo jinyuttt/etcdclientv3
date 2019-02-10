@@ -16,7 +16,7 @@ namespace etcdclientv3.impl
         {
             this.connectionManager = connectionManager;
             managedChannel = connectionManager.NewChannel();
-            maintenanceClient = new MaintenanceClient(managedChannel.channel);
+            maintenanceClient = new MaintenanceClient(managedChannel.Channel);
         }
 
         /**
@@ -54,7 +54,7 @@ namespace etcdclientv3.impl
             Etcdserverpb.AlarmRequest alarmRequest = new Etcdserverpb.AlarmRequest();
             alarmRequest.Alarm = Etcdserverpb.AlarmType.Nospace;
             alarmRequest.Action = Etcdserverpb.AlarmRequest.Types.AlarmAction.Deactivate;
-            alarmRequest.MemberID = member.getMemberId();
+            alarmRequest.MemberID = member.MemberId;
             var rsp = maintenanceClient.Alarm(alarmRequest);
             AlarmResponse response = new AlarmResponse(rsp);
             return response;
@@ -123,6 +123,7 @@ namespace etcdclientv3.impl
             // new FunctionResponse<Etcdserverpb.MoveLeaderRequest, MoveLeaderResponse>()
             //);
         }
+
         public HashKVResponse HashKV(Uri endpoint, long rev)
         {
             //ÐÂÁ¬½Ó

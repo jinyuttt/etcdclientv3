@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>2.0.0</Version>
+    <Description>etcd客户端，个人贡献，任意使用</Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -91,6 +93,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Public\etcdgrpc.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="launcher\" />
   </ItemGroup>
 
 </Project>

@@ -3,20 +3,23 @@ using etcdclientv3.data;
 
 namespace etcdclientv3.options
 {
-    public class GetOption {
+    public class GetOption
+    {
 
-        public static  GetOption DEFAULT = newBuilder().build();
+        public static GetOption DEFAULT = NewBuilder().build();
 
         /**
          * Create a builder to construct option for get operation.
          *
          * @return builder
          */
-        public static Builder newBuilder() {
+        public static Builder NewBuilder()
+        {
             return new Builder();
         }
 
-        public  class Builder {
+        public class Builder
+        {
 
             private long limit = 0L;
             private long revision = 0L;
@@ -25,9 +28,10 @@ namespace etcdclientv3.options
             private bool serializable = false;
             private bool keysOnly = false;
             private bool countOnly = false;
-            private  ByteSequence endKey = null;
+            private ByteSequence endKey = null;
 
-            public Builder() {
+            public Builder()
+            {
             }
 
             /**
@@ -36,7 +40,8 @@ namespace etcdclientv3.options
              * @param limit the maximum number of keys to return for a get request.
              * @return builder
              */
-            public Builder withLimit(long limit) {
+            public Builder WithLimit(long limit)
+            {
                 this.limit = limit;
                 return this;
             }
@@ -51,7 +56,8 @@ namespace etcdclientv3.options
              * @param revision the revision to get.
              * @return builder
              */
-            public Builder withRevision(long revision) {
+            public Builder WithRevision(long revision)
+            {
                 this.revision = revision;
                 return this;
             }
@@ -62,7 +68,8 @@ namespace etcdclientv3.options
              * @param order order to sort the returned key value pairs.
              * @return builder
              */
-            public Builder withSortOrder(SortOrder order) {
+            public Builder WithSortOrder(SortOrder order)
+            {
                 this.sortOrder = order;
                 return this;
             }
@@ -73,7 +80,8 @@ namespace etcdclientv3.options
              * @param field field to sort the key value pairs by the provided
              * @return builder
              */
-            public Builder withSortField(SortTarget field) {
+            public Builder WithSortField(SortTarget field)
+            {
                 this.sortTarget = field;
                 return this;
             }
@@ -88,7 +96,8 @@ namespace etcdclientv3.options
              * @param serializable is the get request a serializable get request.
              * @return builder
              */
-            public Builder withSerializable(bool serializable) {
+            public Builder WithSerializable(bool serializable)
+            {
                 this.serializable = serializable;
                 return this;
             }
@@ -99,7 +108,8 @@ namespace etcdclientv3.options
              * @param keysOnly flag to only return keys
              * @return builder
              */
-            public Builder withKeysOnly(bool keysOnly) {
+            public Builder WithKeysOnly(bool keysOnly)
+            {
                 this.keysOnly = keysOnly;
                 return this;
             }
@@ -110,7 +120,8 @@ namespace etcdclientv3.options
              * @param countOnly flag to only return count of the keys
              * @return builder
              */
-            public Builder withCountOnly(bool countOnly) {
+            public Builder WithCountOnly(bool countOnly)
+            {
                 this.countOnly = countOnly;
                 return this;
             }
@@ -129,7 +140,8 @@ namespace etcdclientv3.options
              * @param endKey end key
              * @return builder
              */
-            public Builder withRange(ByteSequence endKey) {
+            public Builder WithRange(ByteSequence endKey)
+            {
                 this.endKey = endKey;
                 return this;
             }
@@ -144,32 +156,35 @@ namespace etcdclientv3.options
              * @param prefix the common prefix of all the keys that you want to get
              * @return builder
              */
-            public Builder withPrefix(ByteSequence prefix) {
-              
+            public Builder WithPrefix(ByteSequence prefix)
+            {
+
                 ByteSequence prefixEnd = OptionsUtil.PrefixEndOf(prefix);
-                this.withRange(prefixEnd);
+                this.WithRange(prefixEnd);
                 return this;
             }
 
-            public GetOption build() {
+            public GetOption build()
+            {
                 return new GetOption(endKey, limit, revision, sortOrder, sortTarget, serializable, keysOnly,
                     countOnly);
             }
 
         }
 
-        private   ByteSequence endKey;
-        private  long limit;
-        private  long revision;
-        private  SortOrder sortOrder;
-  private  SortTarget sortTarget;
-  private  bool serializable;
-  private  bool keysOnly;
-  private  bool countOnly;
+        private readonly ByteSequence endKey;
+        private readonly long limit;
+        private readonly long revision;
+        private readonly SortOrder sortOrder;
+        private readonly SortTarget sortTarget;
+        private readonly bool serializable;
+        private readonly bool keysOnly;
+        private readonly bool countOnly;
 
-  private GetOption( ByteSequence endKey, long limit, long revision,
-      SortOrder sortOrder, SortTarget sortTarget, bool serializable, bool keysOnly,
-      bool countOnly) {
+        private GetOption(ByteSequence endKey, long limit, long revision,
+            SortOrder sortOrder, SortTarget sortTarget, bool serializable, bool keysOnly,
+            bool countOnly)
+        {
             this.endKey = endKey;
             this.limit = limit;
             this.revision = revision;
@@ -185,45 +200,55 @@ namespace etcdclientv3.options
          *
          * @return the maximum number of keys to return.
          */
-        public long GetLimit() {
+        public long GetLimit()
+        {
             return this.limit;
         }
 
-        public  ByteSequence GetEndKey() {
+        public ByteSequence GetEndKey()
+        {
             return this.endKey;
         }
 
-        public long GetRevision() {
+        public long GetRevision()
+        {
             return revision;
         }
 
-        public SortOrder GetSortOrder() {
+        public SortOrder GetSortOrder()
+        {
             return sortOrder;
         }
 
-        public SortTarget GetSortField() {
+        public SortTarget GetSortField()
+        {
             return sortTarget;
         }
 
-        public bool isSerializable() {
+        public bool isSerializable()
+        {
             return serializable;
         }
 
-        public bool IsKeysOnly() {
+        public bool IsKeysOnly()
+        {
             return keysOnly;
         }
 
-        public bool IsCountOnly() {
+        public bool IsCountOnly()
+        {
             return countOnly;
         }
 
-        public enum SortOrder {
+        public enum SortOrder
+        {
             NONE,
             ASCEND,
             DESCEND,
         }
 
-        public enum SortTarget {
+        public enum SortTarget
+        {
             KEY,
             VERSION,
             CREATE,

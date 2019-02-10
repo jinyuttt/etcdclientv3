@@ -30,7 +30,7 @@ namespace Authpb {
             "CgNrZXkYAiABKAwSEQoJcmFuZ2VfZW5kGAMgASgMIioKBFR5cGUSCAoEUkVB",
             "RBAAEgkKBVdSSVRFEAESDQoJUkVBRFdSSVRFEAIiPwoEUm9sZRIMCgRuYW1l",
             "GAEgASgMEikKDWtleVBlcm1pc3Npb24YAiADKAsyEi5hdXRocGIuUGVybWlz",
-            "c2lvbkIYChRjb20uY29yZW9zLmpldGNkLmFwaVABYgZwcm90bzM="));
+            "c2lvbkIVChFpby5ldGNkLmpldGNkLmFwaVABYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {

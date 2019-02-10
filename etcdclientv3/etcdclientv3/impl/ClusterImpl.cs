@@ -15,7 +15,7 @@ class ClusterImpl : ICluster {
   ClusterImpl(ClientConnectionManager connectionManager) {
     this.connectionManager = connectionManager;
             managedChannel = connectionManager.NewChannel();
-            clusterClient = new ClusterClient(managedChannel.channel);
+            clusterClient = new ClusterClient(managedChannel.Channel);
   }
 
   /**

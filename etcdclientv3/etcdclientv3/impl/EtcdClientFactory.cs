@@ -12,7 +12,5 @@ namespace etcdclientv3.impl
             return (V)Activator.CreateInstance(typeof(V), request);
         
         }
-
-     
     }
 }

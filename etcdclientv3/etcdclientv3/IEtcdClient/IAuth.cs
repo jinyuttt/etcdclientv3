@@ -4,25 +4,25 @@ using etcdclientv3.data;
 
 namespace etcdclientv3.IEtcdClient
 {
-  public  interface IAuth
+    public interface IAuth
     {
 
-       AuthEnableResponse AuthEnable();
+        AuthEnableResponse AuthEnable();
 
         /**
          * disables auth of an etcd cluster.
          */
-       AuthDisableResponse AuthDisable();
+        AuthDisableResponse AuthDisable();
 
         /**
          * adds a new user to an etcd cluster.
          */
-       AuthUserAddResponse UserAdd(ByteSequence user, ByteSequence password);
+        AuthUserAddResponse UserAdd(ByteSequence user, ByteSequence password);
 
         /**
          * deletes a user from an etcd cluster.
          */
-      AuthUserDeleteResponse UserDelete(ByteSequence user);
+        AuthUserDeleteResponse UserDelete(ByteSequence user);
 
         /**
          * changes a password of a user.
@@ -33,12 +33,12 @@ namespace etcdclientv3.IEtcdClient
         /**
          * gets a detailed information of a user.
          */
-       AuthUserGetResponse UserGet(ByteSequence user);
+        AuthUserGetResponse UserGet(ByteSequence user);
 
         /**
          * gets a list of all users.
          */
-      AuthUserListResponse UserList();
+        AuthUserListResponse UserList();
 
         /**
          * grants a role to a user.
@@ -48,8 +48,8 @@ namespace etcdclientv3.IEtcdClient
         /**
          * revokes a role of a user.
          */
-       AuthUserRevokeRoleResponse UserRevokeRole(ByteSequence user,
-            ByteSequence role);
+        AuthUserRevokeRoleResponse UserRevokeRole(ByteSequence user,
+             ByteSequence role);
 
         /**
          * adds a new role to an etcd cluster.
@@ -59,9 +59,9 @@ namespace etcdclientv3.IEtcdClient
         /**
          * grants a permission to a role.
          */
-     AuthRoleGrantPermissionResponse RoleGrantPermission(ByteSequence role,
-            ByteSequence key,
-            ByteSequence rangeEnd, Permission.Type permType);
+        AuthRoleGrantPermissionResponse RoleGrantPermission(ByteSequence role,
+               ByteSequence key,
+               ByteSequence rangeEnd, Permission.Type permType);
 
         /**
          * gets a detailed information of a role.

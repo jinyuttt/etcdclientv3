@@ -1,12 +1,11 @@
 ﻿using etcdclientv3.data;
 using etcdclientv3.IEtcdClient;
-using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace etcdclientv3.EtcdClient
 {
-   public class UitlEtcdClient
+    public class UitlEtcdClient
     {
         IEtcdClient.ClientBuilder clientBuilder = null;
         IClient client = null;
@@ -20,29 +19,29 @@ namespace etcdclientv3.EtcdClient
             client = clientBuilder.Build();
             return client;
         }
-        public void close()
+        public void Close()
         {
             client.Close();
         }
         public void Put(string key,string value)
         {
          
-            ByteSequence bkey = ByteSequence.from(key, Encoding.UTF8);
-            ByteSequence bvalue = ByteSequence.from(value, Encoding.UTF8);
+            ByteSequence bkey = ByteSequence.From(key, Encoding.UTF8);
+            ByteSequence bvalue = ByteSequence.From(value, Encoding.UTF8);
             client.GetKVClient().Put(bkey, bvalue);
         }
 
         public void Delete(string key)
         {
          
-            ByteSequence bkey = ByteSequence.from(key, Encoding.UTF8);
+            ByteSequence bkey = ByteSequence.From(key, Encoding.UTF8);
             client.GetKVClient().Delete(bkey);
         }
 
         public string Get(string key)
         {
            
-            ByteSequence bkey = ByteSequence.from(key, Encoding.UTF8);
+            ByteSequence bkey = ByteSequence.From(key, Encoding.UTF8);
              List<KeyValue> keyValues=  client.GetKVClient().Get(bkey).GetKvs();
             if(keyValues.Count>0)
             {

@@ -15,12 +15,12 @@ namespace etcdclientv3.data
 
         public ByteSequence GetKey()
         {
-            return ByteSequence.from(kv.Key);
+            return ByteSequence.From(kv.Key);
         }
 
         public ByteSequence GetValue()
         {
-            return ByteSequence.from(kv.Value);
+            return ByteSequence.From(kv.Value);
         }
 
         public long GetCreateRevision()

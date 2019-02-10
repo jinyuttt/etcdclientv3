@@ -9,10 +9,10 @@ using System.Text;
 
 namespace etcdclientv3.IEtcdClient
 {
-   public class ClientBuilder
+    public class ClientBuilder
     {
-        private  ISet<Uri> endpoints = new HashSet<Uri>();
-        private  string user;
+        private ISet<Uri> endpoints = new HashSet<Uri>();
+        private string user;
         private string password;
         private LoadBalancer.IFactory loadBalancerFactory;
         private SslStream sslContext;
@@ -21,9 +21,9 @@ namespace etcdclientv3.IEtcdClient
         private URIResolverLoader uriResolverLoader;
         private int maxInboundMessageSize;
         private Dictionary<Metadata, Object> headers;
-       public ClientBuilder()
+        public ClientBuilder()
         {
-         }
+        }
         public List<Uri> EndPoints()
         {
             return new List<Uri>(this.endpoints);
@@ -33,7 +33,7 @@ namespace etcdclientv3.IEtcdClient
 
             foreach (Uri endpoint in endpoints)
             {
-              
+
                 this.endpoints.Add(endpoint);
             }
 
@@ -43,14 +43,14 @@ namespace etcdclientv3.IEtcdClient
         {
             return EndPoints(Util.ToURIs(new List<string>(endpoints)));
         }
-        public ClientBuilder EndPoints(params  Uri[] endpoints)
+        public ClientBuilder EndPoints(params Uri[] endpoints)
         {
 
             return EndPoints(new List<Uri>(endpoints));
         }
         public ByteSequence User
         {
-           get { return ByteSequence.from(user, Encoding.Default); }
+            get { return ByteSequence.From(user, Encoding.Default); }
         }
 
         /**
@@ -62,14 +62,14 @@ namespace etcdclientv3.IEtcdClient
    */
         public ClientBuilder SetUser(ByteSequence user)
         {
-          
+
             this.user = user.ToString();
             return this;
         }
 
         public ByteSequence Password
         {
-            get { return ByteSequence.from(password, Encoding.Default); }
+            get { return ByteSequence.From(password, Encoding.Default); }
         }
 
         /**
@@ -81,7 +81,7 @@ namespace etcdclientv3.IEtcdClient
          */
         public ClientBuilder SetPassword(ByteSequence password)
         {
-          
+
             this.password = password.ToString();
             return this;
         }
@@ -105,10 +105,12 @@ namespace etcdclientv3.IEtcdClient
          */
         public LoadBalancer.IFactory LoadBalancerFactory()
         {
-            if(loadBalancerFactory==null)
+            if (loadBalancerFactory == null)
             {
-                LoadUrlLunXun loadUrl = new LoadUrlLunXun();
-                loadUrl.EndPoint = this.EndPoints();
+                LoadUrlLunXun loadUrl = new LoadUrlLunXun
+                {
+                    EndPoint = this.EndPoints()
+                };
                 loadBalancerFactory = loadUrl;
             }
             return loadBalancerFactory;
@@ -214,8 +216,5 @@ namespace etcdclientv3.IEtcdClient
             clientBuilder.endpoints = this.endpoints;
             return clientBuilder;
         }
-      
     }
-
-   
 }
