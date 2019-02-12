@@ -2,11 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>2.0.3</Version>
+    <Version>3.0.0</Version>
     <Description>etcd客户端，个人贡献，任意使用</Description>
     <PackageId>etcdclient</PackageId>
     <Authors>jason成都</Authors>
     <Product>jason成都</Product>
+    <PackageProjectUrl>https://github.com/jinyuttt/etcdclientv3.git</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

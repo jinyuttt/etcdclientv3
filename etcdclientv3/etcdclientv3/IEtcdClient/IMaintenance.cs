@@ -1,5 +1,6 @@
 using etcdclientv3.maintenance;
 using System;
+using System.IO;
 using System.Net.Sockets;
 namespace etcdclientv3.IEtcdClient
 {
@@ -56,7 +57,7 @@ namespace etcdclientv3.IEtcdClient
          *
          * @return a Snapshot for retrieving backend snapshot.
          */
-         long Snapshot();
+         long Snapshot(Stream output);
 
         /**
          * retrieves backend snapshot as as stream of chunks.

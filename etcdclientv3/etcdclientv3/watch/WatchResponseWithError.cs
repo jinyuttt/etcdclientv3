@@ -6,9 +6,9 @@ namespace etcdclientv3.watch
     public class WatchResponseWithError
     {
 
-        private Etcdserverpb.WatchResponse watchResponse;
-        private EtcdException exception;
-        private WatchResponse response;
+        private readonly Etcdserverpb.WatchResponse watchResponse;
+        private readonly EtcdException exception;
+        private readonly WatchResponse response;
 
         private WatchResponseWithError()
         {

@@ -6,9 +6,9 @@ namespace etcdclientv3.watch
     public class WatchEvent
     {
 
-        private KeyValue keyValue;
-        private KeyValue prevKV;
-        private EventType eventType;
+        private readonly KeyValue keyValue;
+        private readonly KeyValue prevKV;
+        private readonly EventType eventType;
 
         public WatchEvent(KeyValue keyValue, KeyValue prevKV, EventType eventType)
         {
@@ -17,17 +17,17 @@ namespace etcdclientv3.watch
             this.eventType = eventType;
         }
 
-        public KeyValue getKeyValue()
+        public KeyValue GetKeyValue()
         {
             return keyValue;
         }
 
-        public KeyValue getPrevKV()
+        public KeyValue GetPrevKV()
         {
             return prevKV;
         }
 
-        public EventType getEventType()
+        public EventType GetEventType()
         {
             return eventType;
         }
@@ -42,8 +42,6 @@ namespace etcdclientv3.watch
         internal KeyValue GetKv()
         {
             return prevKV;
-
-
         }
     }
 }

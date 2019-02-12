@@ -1,6 +1,7 @@
 using etcdclientv3.IEtcdClient;
 using etcdclientv3.maintenance;
 using System;
+using System.IO;
 using static Etcdserverpb.Maintenance;
 
 namespace etcdclientv3.impl
@@ -139,11 +140,31 @@ namespace etcdclientv3.impl
         }
 
 
-        public long Snapshot()
+        public long Snapshot(Stream output)
         {
+            long sum = 0;
             Etcdserverpb.SnapshotRequest request = new Etcdserverpb.SnapshotRequest();
             var rsp = maintenanceClient.Snapshot(request);
-            return 0;
+            if (rsp.GetStatus().StatusCode == Grpc.Core.StatusCode.OK)
+            {
+                rsp.ResponseStream.Current.Blob.WriteTo(output);
+                sum = rsp.ResponseStream.Current.Blob.Length;
+                System.Threading.CancellationToken cancellationToken = new System.Threading.CancellationToken();
+                while (true)
+                {
+                    var task = rsp.ResponseStream.MoveNext(cancellationToken);
+                    if (task.Result)
+                    {
+                        rsp.ResponseStream.Current.Blob.WriteTo(output);
+                        sum = rsp.ResponseStream.Current.Blob.Length;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+            }
+            return sum;
         }
 
         public void Close()

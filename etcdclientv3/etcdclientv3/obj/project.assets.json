@@ -1089,7 +1089,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "2.0.3",
+    "version": "3.0.0",
     "restore": {
       "projectUniqueName": "E:\\Study\\vs\\etcdclient\\etcdclientv3\\etcdclientv3\\etcdclientv3\\etcdclientv3.csproj",
       "projectName": "etcdclient",

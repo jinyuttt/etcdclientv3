@@ -8,8 +8,8 @@ namespace etcdclientv3.watch
     public class WatchResponse : AbstractResponse<Etcdserverpb.WatchResponse>
     {
 
-        private List<WatchEvent> events;
-        private object lock_obj = new object();
+        private List<WatchEvent> events=null;
+        private readonly object lock_obj = new object();
         public WatchResponse(Etcdserverpb.WatchResponse response) : base(response, response.Header)
         {
 
@@ -50,42 +50,12 @@ namespace etcdclientv3.watch
                         {
                             list.Add(ToEvent(m));
                         }
-
+                        events = list;
                     }
                 }
             }
 
             return events;
-        }
-
-        internal int GetWatchId()
-        {
-            throw new NotImplementedException();
-        }
-
-        internal int GetCompactRevision()
-        {
-            throw new NotImplementedException();
-        }
-
-        internal int GetEventsCount()
-        {
-            return this.events.Count;
-        }
-
-        internal WatchEvent GetEvents(int v)
-        {
-            return this.events[v];
-        }
-
-        internal string GetCancelReason()
-        {
-            throw new NotImplementedException();
-        }
-
-        internal WatchResponse Get()
-        {
-            throw new NotImplementedException();
         }
     }
 }

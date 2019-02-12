@@ -1,4 +1,5 @@
 ﻿using etcdclientv3.watch;
+using System.Collections.Generic;
 
 namespace etcdclientv3.IEtcdClient
 {
@@ -19,5 +20,9 @@ namespace etcdclientv3.IEtcdClient
          * @throws InterruptedException when listen thread is interrupted.
          */
         WatchResponse Listen();
+
+        List<WatchEvent> ReadAll();
+
+        List<WatchEvent> GetLastEvent();
     }
 }

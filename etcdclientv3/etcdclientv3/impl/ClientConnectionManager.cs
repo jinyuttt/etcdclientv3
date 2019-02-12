@@ -90,9 +90,11 @@ namespace etcdclientv3.impl
          */
         private static AuthenticateResponse Authenticate(Channel channel, ByteSequence username, ByteSequence password)
         {
-            AuthenticateRequest requet = new AuthenticateRequest();
-            requet.Name = username.ToString();
-            requet.Password = password.ToString();
+            AuthenticateRequest requet = new AuthenticateRequest
+            {
+                Name = username.ToString(),
+                Password = password.ToString()
+            };
             Auth.AuthClient authClient = new Auth.AuthClient(channel);
             var rsp = authClient.Authenticate(requet);
             AuthenticateResponse response = new AuthenticateResponse(rsp);
