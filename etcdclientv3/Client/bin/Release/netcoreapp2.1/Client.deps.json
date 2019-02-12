@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v2.1": {
       "Client/1.0.0": {
         "dependencies": {
-          "etcdclientv3": "2.0.0"
+          "etcdclient": "3.0.0"
         },
         "runtime": {
           "Client.dll": {}
@@ -135,15 +135,15 @@
           "System.Runtime.Handles": "4.0.1"
         }
       },
-      "etcdclientv3/2.0.0": {
+      "etcdclient/3.0.0": {
         "dependencies": {
-          "etcdgrpc": "1.0.0"
+          "etcdgrpc": "2.1.0"
         },
         "runtime": {
           "etcdclientv3.dll": {}
         }
       },
-      "etcdgrpc/1.0.0": {
+      "etcdgrpc/2.1.0": {
         "dependencies": {
           "Google.Protobuf": "3.6.1",
           "Google.Protobuf.Tools": "3.6.1",
@@ -266,12 +266,12 @@
       "path": "system.threading.threadpool/4.0.10",
       "hashPath": "system.threading.threadpool.4.0.10.nupkg.sha512"
     },
-    "etcdclientv3/2.0.0": {
+    "etcdclient/3.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "etcdgrpc/1.0.0": {
+    "etcdgrpc/2.1.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

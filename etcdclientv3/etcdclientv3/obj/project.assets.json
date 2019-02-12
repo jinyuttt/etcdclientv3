@@ -229,7 +229,7 @@
           "lib/netstandard1.3/System.Threading.ThreadPool.dll": {}
         }
       },
-      "etcdgrpc/1.0.0": {
+      "etcdgrpc/2.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -1072,7 +1072,7 @@
         "system.threading.threadpool.nuspec"
       ]
     },
-    "etcdgrpc/1.0.0": {
+    "etcdgrpc/2.1.0": {
       "type": "project",
       "path": "../Public/etcdgrpc.csproj",
       "msbuildProject": "../Public/etcdgrpc.csproj"
@@ -1081,7 +1081,7 @@
   "projectFileDependencyGroups": {
     ".NETStandard,Version=v2.0": [
       "NETStandard.Library >= 2.0.3",
-      "etcdgrpc >= 1.0.0"
+      "etcdgrpc >= 2.1.0"
     ]
   },
   "packageFolders": {

@@ -7,10 +7,10 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "etcdclientv3/2.0.3": {
+      "etcdclientv3/3.0.0": {
         "dependencies": {
           "NETStandard.Library": "2.0.3",
-          "etcdgrpc": "1.0.0"
+          "etcdgrpc": "2.1.0"
         },
         "runtime": {
           "etcdclientv3.dll": {}
@@ -154,7 +154,7 @@
           }
         }
       },
-      "etcdgrpc/1.0.0": {
+      "etcdgrpc/2.1.0": {
         "dependencies": {
           "Google.Protobuf": "3.6.1",
           "Google.Protobuf.Tools": "3.6.1",
@@ -167,7 +167,7 @@
     }
   },
   "libraries": {
-    "etcdclientv3/2.0.3": {
+    "etcdclientv3/3.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -298,7 +298,7 @@
       "path": "system.threading.threadpool/4.0.10",
       "hashPath": "system.threading.threadpool.4.0.10.nupkg.sha512"
     },
-    "etcdgrpc/1.0.0": {
+    "etcdgrpc/2.1.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

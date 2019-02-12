@@ -406,7 +406,7 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
-          "etcdgrpc": "1.0.0"
+          "etcdgrpc": "2.1.0"
         },
         "compile": {
           "bin/placeholder/etcdclient.dll": {}
@@ -415,7 +415,7 @@
           "bin/placeholder/etcdclient.dll": {}
         }
       },
-      "etcdgrpc/1.0.0": {
+      "etcdgrpc/2.1.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -1573,7 +1573,7 @@
       "path": "../etcdclientv3/etcdclientv3.csproj",
       "msbuildProject": "../etcdclientv3/etcdclientv3.csproj"
     },
-    "etcdgrpc/1.0.0": {
+    "etcdgrpc/2.1.0": {
       "type": "project",
       "path": "../Public/etcdgrpc.csproj",
       "msbuildProject": "../Public/etcdgrpc.csproj"

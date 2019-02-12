@@ -7,7 +7,7 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "etcdgrpc/1.0.0": {
+      "etcdgrpc/2.1.0": {
         "dependencies": {
           "Google.Protobuf": "3.6.1",
           "Google.Protobuf.Tools": "3.6.1",
@@ -159,7 +159,7 @@
     }
   },
   "libraries": {
-    "etcdgrpc/1.0.0": {
+    "etcdgrpc/2.1.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

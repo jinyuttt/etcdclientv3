@@ -2,13 +2,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>etcdgrpc</id>
-    <version>1.0.0</version>
-    <authors>etcdgrpc</authors>
-    <owners>etcdgrpc</owners>
+    <version>2.1.0</version>
+    <authors>jinyu成都</authors>
+    <owners>jinyu成都</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectUrl>https://github.com/jinyuttt/etcdclientv3.git</projectUrl>
     <description>etcd客户端grpc文件，为客户端使用</description>
-    <releaseNotes>etcd客户端grpc文件，为客户端使用；单独隔离成项目，方便解决方案控制和升级</releaseNotes>
+    <releaseNotes>etcd客户端grpc文件，为客户端使用；单独隔离成项目，方便解决方案控制和升级；1.*版本作为测试版本，所以直接到了2.*版本</releaseNotes>
     <dependencies>
       <group targetFramework=".NETStandard2.0">
         <dependency id="Google.Protobuf" version="3.6.1" exclude="Build,Analyzers" />
