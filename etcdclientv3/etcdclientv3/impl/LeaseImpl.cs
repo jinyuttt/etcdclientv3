@@ -24,7 +24,7 @@ namespace etcdclientv3.impl
         private ManagedChannel managedChannel;
         private LeaseClient leaseClient = null;
         private ConcurrentDictionary<long, KeepAlive<Etcdserverpb.LeaseKeepAliveRequest,Etcdserverpb.LeaseKeepAliveResponse>> keepAlives = null;
-        private volatile bool closed;
+        private volatile bool closed=false;
          Timer timer= new Timer(500);
         Timer timerDeadLine = new Timer(1000);
 

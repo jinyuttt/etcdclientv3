@@ -2,12 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>3.0.0</Version>
-    <Description>etcd客户端，个人贡献，任意使用</Description>
+    <Version>3.4.0</Version>
+    <Description>etcd客户端，支持的V3版本，个人贡献，任意使用</Description>
     <PackageId>etcdclient</PackageId>
     <Authors>jason成都</Authors>
     <Product>jason成都</Product>
     <PackageProjectUrl>https://github.com/jinyuttt/etcdclientv3.git</PackageProjectUrl>
+    <PackageReleaseNotes>根据官方java版本修改的；但是最近也发现了官网提供了原始的c#版本，更加简单，自己搜索</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

@@ -402,7 +402,7 @@
           "lib/netstandard1.3/System.Threading.ThreadPool.dll": {}
         }
       },
-      "etcdclient/3.0.0": {
+      "etcdclient/3.4.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v2.0",
         "dependencies": {
@@ -1568,7 +1568,7 @@
         "system.threading.threadpool.nuspec"
       ]
     },
-    "etcdclient/3.0.0": {
+    "etcdclient/3.4.0": {
       "type": "project",
       "path": "../etcdclientv3/etcdclientv3.csproj",
       "msbuildProject": "../etcdclientv3/etcdclientv3.csproj"
@@ -1582,7 +1582,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.1": [
       "Microsoft.NETCore.App >= 2.1.0",
-      "etcdclient >= 3.0.0"
+      "etcdclient >= 3.4.0"
     ]
   },
   "packageFolders": {

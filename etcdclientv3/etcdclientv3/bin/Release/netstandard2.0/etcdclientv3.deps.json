@@ -7,7 +7,7 @@
   "targets": {
     ".NETStandard,Version=v2.0": {},
     ".NETStandard,Version=v2.0/": {
-      "etcdclientv3/3.0.0": {
+      "etcdclientv3/3.4.0": {
         "dependencies": {
           "NETStandard.Library": "2.0.3",
           "etcdgrpc": "2.1.0"
@@ -167,7 +167,7 @@
     }
   },
   "libraries": {
-    "etcdclientv3/3.0.0": {
+    "etcdclientv3/3.4.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

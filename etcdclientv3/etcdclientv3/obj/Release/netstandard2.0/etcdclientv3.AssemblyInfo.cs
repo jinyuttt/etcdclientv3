@@ -13,12 +13,12 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("jason成都")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
-[assembly: System.Reflection.AssemblyDescriptionAttribute("etcd客户端，个人贡献，任意使用")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("3.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("3.0.0")]
+[assembly: System.Reflection.AssemblyDescriptionAttribute("etcd客户端，支持的V3版本，个人贡献，任意使用")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("3.4.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("3.4.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("jason成都")]
 [assembly: System.Reflection.AssemblyTitleAttribute("etcdclientv3")]
-[assembly: System.Reflection.AssemblyVersionAttribute("3.0.0.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("3.4.0.0")]
 
 // 由 MSBuild WriteCodeFragment 类生成。
 
